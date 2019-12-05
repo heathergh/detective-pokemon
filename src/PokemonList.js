@@ -1,13 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 
-import pIL from './pokemonImageArray';
+import pokemonImages from './pokemonImageArray';
 
-class PokemonApi extends React.Component {
+class PokemonList extends React.Component {
   constructor() {
     super();
     this.state = {
-      currentPokemon: []
+      currentPokemon: [],
+      userSelection: ''
     }
   }
   componentDidMount() {
@@ -20,10 +21,10 @@ class PokemonApi extends React.Component {
       dataResponse: 'json',
     });
     pokemonTypePromises.push(correctType);
-    
 
 
-    for(let i = 0; i < 4; i++){
+
+    for (let i = 0; i < 4; i++) {
       const otherChoice = axios({
         method: 'GET',
         url: `https://pokeapi.co/api/v2/type/${this.getRandomNumber(18)}`,
@@ -38,21 +39,20 @@ class PokemonApi extends React.Component {
       response.forEach((data) => {
 
         let listOfPokemon = data.data.pokemon;
-        console.log(listOfPokemon);
+ 
 
         listOfPokemon = listOfPokemon.filter((pokemon) => {
           const url = pokemon.pokemon.url;
           const index = url.slice(34);
-          if(parseInt(index) > 719){
+          if (parseInt(index) > 719) {
             return false;
           }
-          
+
           return true;
         })
 
-        const choice = this.getRandomNumber(listOfPokemon.length);
+        const choice = this.getRandomNumber(listOfPokemon.length-1);
 
-        console.log(listOfPokemon);
 
 
         const chosenPokemon = listOfPokemon[choice].pokemon;
@@ -68,10 +68,6 @@ class PokemonApi extends React.Component {
         const newPokemonList = [];
         response.forEach((data) => {
           const pokemon = data.data;
-          // console.log(pokemon);
-          // console.log(pokemon.name);
-          // console.log(pokemon.types);
-          // console.log(pokemon.id);
           const newPoke = {
             name: pokemon.name,
             types: pokemon.types,
@@ -84,43 +80,55 @@ class PokemonApi extends React.Component {
         })
       })
     });
-    
+
   }
 
   getRandomNumber = (max) => {
     return Math.floor(Math.random() * max) + 1;
   }
 
-  getPokemonChoices = () => {
-    //What do we need from the pokemon?
-    //.name
-    //.sprites.front_default
-    //.sprites.back_default?
-    //.types[#].type.name 
-    //.weight?
-    //.moves[#].move.name?
-    //Get a pokemon with a correct type
-    //https://pokeapi.co/api/v2/type/[type-that-works-well-with-the-crime]/
-    //.pokemon[random-number].pokemon.url
-    //Get more details
-    //eg -> https://pokeapi.co/api/v2/pokemon/16/
-    //Get 4 more random pokemon
-    //https://pokeapi.co/api/v2/type/[random-number]
-    //Get more details forEach of these pokemon
-    //using the pokemon.url eg -> https://pokeapi.co/api/v2/pokemon/[same-random-number]/
-  };
+
+  handleOptionChange = (event) => {
+    this.setState({
+      userSelection: event.target.value
+    })
+    console.log(this.state.userSelection)
+  }
+
+  returnedSelection = (e) => {
+  e.preventDefault();
+   console.log(this.state.currentPokemon[this.state.userSelection])
+  }
 
   render() {
-    return(
-      <>
-        {
-        this.state.currentPokemon.map((poke) => {
-          return <img src={pIL[poke.id]} />
-        })
-        }
-      </>
+    return (
+      <div className="pokemonList">
+        <form className="pokemonList" id="pokemonList">
+          <legend> Select the pokemon to help you with the case:</legend>
+          {this.state.currentPokemon.map((poke, i) => {
+            return (
+              <div key={poke.id+i}>
+                <img src={pokemonImages[poke.id-1]} alt={`here is${poke.name}`} />
+                <input type="radio" name="pokemon" id={poke.id} value={i} checked={parseInt(this.state.userSelection) === i} onChange={this.handleOptionChange} />
+                <label htmlFor={poke.id}>{poke.name}</label>
+                {poke.types.map((type, i) => {
+                  return (
+                   <p key={type.type.name+i}>{type.type.name}</p>
+                  )
+               
+                })}
+                
+              </div>
+            )
+          })}
+          <button id="submit" onClick={this.returnedSelection}>Start investigation!</button>  
+        </form>
+      </div>
+
+
+
     );
   }
 };
 
-export default PokemonApi;
+export default PokemonList;

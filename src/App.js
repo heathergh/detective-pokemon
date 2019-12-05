@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import PokemonList from './PokemonList';
 
 import './App.css';
 
@@ -52,7 +53,7 @@ class App extends React.Component {
     return (
       <div>
         {/* Header & Static Infomation */}
-
+        <PokemonList />
         {/* Form For User Choices */}
         {/* Name Text Input */}
         {/* Location Select */}
