@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import './App.css';
 
+<<<<<<< HEAD
 import crimeHotSpots from './crimeHotSpots.json';
 
 class App extends React.Component {
@@ -71,6 +72,11 @@ class App extends React.Component {
     );
   }
 };
+=======
+function App() {
+  return <h1>Testing pull request with group</h1>;
+}
+>>>>>>> rc-1.0.0
 
 export default App;
 
