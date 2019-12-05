@@ -1,9 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 
-import './App.css';
+import '../App.css';
 
-import crimeHotSpots from './crimeHotSpots.json';
+import crimeHotSpots from '../crimeHotSpots.json';
 
 class App extends React.Component {
   constructor() {
