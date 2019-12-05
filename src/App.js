@@ -34,7 +34,7 @@ class App extends React.Component {
     //.name
     //.sprites.front_default
     //.sprites.back_default?
-    //.types[#].type.name
+    //.types[#].type.name 
     //.weight?
     //.moves[#].move.name?
     //Get a pokemon with a correct type
