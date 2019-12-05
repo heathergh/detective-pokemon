@@ -1,0 +1,58 @@
+{
+  "types": [
+    "normal",
+    "fighting",
+    "flying",
+    "poison",
+    "ground",
+    "rock",
+    "bug",
+    "ghost",
+    "steel",
+    "fire",
+    "water",
+    "grass",
+    "electric",
+    "psychic",
+    "ice",
+    "dragon",
+    "dark",
+    "fairy"
+  ],
+  "anti-social-behaviour" : { 
+      "successfulTypes": []
+  },
+  "bicycle-theft" : { 
+    "successfulTypes": [3]
+  },
+  "burglary" : { 
+    "successfulTypes": []
+  },
+  "criminal-damage-arson" : { 
+    "successfulTypes": []
+  },
+  "drugs" : { 
+    "successfulTypes": []
+  },
+  "possession-of-weapons" : { 
+    "successfulTypes": []
+  },
+  "public-order" : { 
+    "successfulTypes": []
+  },
+  "robbery" : { 
+    "successfulTypes": []
+  },
+  "shoplifting" : { 
+    "successfulTypes": []
+  },
+  "theft-from-the-person" : { 
+    "successfulTypes": []
+  },
+  "vehicle-crime" : { 
+    "successfulTypes": []
+  },
+  "violent-crime" : { 
+    "successfulTypes": []
+  }
+}
