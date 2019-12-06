@@ -1,10 +1,8 @@
 import React from 'react';
-import axios from 'axios';
-import PokemonList from './PokemonList';
 
-import './App.css';
+import '../App.css';
 
-import crimeHotSpots from './crimeHotSpots.json';
+import crimeHotSpots from '../crimeHotSpots.json';
 
 class App extends React.Component {
   constructor() {
@@ -53,7 +51,7 @@ class App extends React.Component {
     return (
       <div>
         {/* Header & Static Infomation */}
-        <PokemonList />
+
         {/* Form For User Choices */}
         {/* Name Text Input */}
         {/* Location Select */}
