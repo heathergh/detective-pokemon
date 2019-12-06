@@ -4,7 +4,7 @@ import locations from '../crimeHotSpots.json';
 import Select from './Select';
 import Button from './Button';
 import ErrorMessage from './ErrorMessage';
-
+import PokemonList from './PokemonList';
 
 class Form extends Component {
     constructor() {
@@ -20,6 +20,7 @@ class Form extends Component {
             crime: {},
             categoryValid: false,
             locationValid: false,
+            showPokemon: false
         }
     }
 
@@ -100,6 +101,9 @@ class Form extends Component {
                     errorMessage: ''
                 }, () => {
                     // placeholder for Pokemon function invocation
+                    this.setState({
+                        showPokemon: true
+                    })
                 });
             } else {
                 this.setState({
@@ -114,52 +118,63 @@ class Form extends Component {
         })
     }
 
+    getLocationName = (location) => {
+        for(let key in this.state.crimeLocations){
+            if(this.state.crimeLocations[key].poly === location){
+                return this.state.crimeLocations[key].name;
+            }
+        }
+    }
+
     render() {
         return (
             <>
-                <div>Form Page</div>
-                <form
-                    // onSubmit="placeholder for onSubmit function to get pokemon"
-                >
-                    <Select
-                        changeHandler={e => {
-                            this.getUserInput(e, 'userCrimeLocation')
-                        }}
-                        label={'Crime Locations'}
-                        labelFor={'crime-location'}
-                        arrayProp={this.state.crimeLocations}
-                        optionValue={'poly'}
-                        optionName={'name'}
-                        selectName={'crime-locations'}
-                        isValid={this.state.locationValid}
-                    />
+            {
+                this.state.showPokemon
+                ?   <> 
+                        <p>You're in {this.getLocationName(this.state.userCrimeLocation)} solving a case about {this.state.userCrimeCategory}.</p>
+                        <PokemonList checkResultCallback={this.props.checkResultCallback} crimeProp={this.state.crime} />
+                    </>
+                :   <div>
+                        <div>Form Page</div>
+                        <form
+                            // onSubmit="placeholder for onSubmit function to get pokemon"
+                        >
+                            <Select
+                                changeHandler={e => {
+                                    this.getUserInput(e, 'userCrimeLocation')
+                                }}
+                                label={'Crime Locations'}
+                                labelFor={'crime-location'}
+                                arrayProp={this.state.crimeLocations}
+                                optionValue={'poly'}
+                                optionName={'name'}
+                                selectName={'crime-locations'}
+                                isValid={this.state.locationValid}
+                            />
 
-                    <Select
-                        changeHandler={e => {
-                            this.getUserInput(e, 'userCrimeCategory')
-                        }}
-                        onChange={this.getUserInput}
-                        label={'Crime Categories'}
-                        labelFor={'crime-category'}
-                        arrayProp={this.state.crimeCategories}
-                        optionValue={'url'}
-                        optionName={'name'}
-                        selectName={'crime-categories'}
-                        isValid={this.state.categoryValid}
-                    />
+                            <Select
+                                changeHandler={e => {
+                                    this.getUserInput(e, 'userCrimeCategory')
+                                }}
+                                onChange={this.getUserInput}
+                                label={'Crime Categories'}
+                                labelFor={'crime-category'}
+                                arrayProp={this.state.crimeCategories}
+                                optionValue={'url'}
+                                optionName={'name'}
+                                selectName={'crime-categories'}
+                                isValid={this.state.categoryValid}
+                            />
 
-                    <Button onClick={e => { this.clickHandler(e, this.state.userCrimeCategory, this.state.userCrimeLocation)}}>
-                        Get Pokemon Helpers
-                    </Button>
+                            <Button onClick={e => { this.clickHandler(e, this.state.userCrimeCategory, this.state.userCrimeLocation)}}>
+                                Get Pokemon Helpers
+                            </Button>
 
-                    { this.state.errorMessage !== '' ? <ErrorMessage id={'error-description'}>{this.state.errorMessage}</ErrorMessage> : null }
-
-                    {/* <PokemonList /> */}
-
-                    {/* <Button onClick={() => {}}>
-                        Solve the Crime
-                    </Button> */}
-                </form>
+                            { this.state.errorMessage !== '' ? <ErrorMessage id={'error-description'}>{this.state.errorMessage}</ErrorMessage> : null }
+                        </form>
+                    </div>
+            }
             </>
         )
     }
