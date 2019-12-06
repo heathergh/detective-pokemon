@@ -9,6 +9,8 @@ const Select = ({arrayProp, optionValue, optionName, labelFor, label, selectName
         )
     })
 
+    // check if a category and/or location has been chosen
+    // if not, change the aria-describedby to error-description (which matches the error message id) and change the aria-valid attribute to true
     let errorMessageId = '';
     let ariaValidator = false;
 
