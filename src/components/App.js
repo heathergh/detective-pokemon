@@ -55,6 +55,12 @@ class App extends React.Component {
       resultInfo: newResult
     })
   }
+
+  resetTheGame = () => {
+    this.setState({
+      sceneNumber: 1
+    })
+  }
   
 
   render() {
@@ -75,7 +81,7 @@ class App extends React.Component {
               resultOfGame={this.state.resultInfo.resultOfGame}
               crimeSolved={this.state.resultInfo.crimeSolved}
               reasonForSuccess={this.state.resultInfo.reasonForSuccess}
-              playAgain = {() => console.log("play again")} 
+              playAgain = {this.resetTheGame} 
             />
           :null
         }

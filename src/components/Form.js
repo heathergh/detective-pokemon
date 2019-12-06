@@ -103,13 +103,12 @@ class Form extends Component {
                 {
                     this.state.showPokemon
                     ?   <> 
-                    
                             <p>You're in {this.getLocationName(this.state.userCrimeLocation)} solving a case about {this.state.userCrimeCategory}.</p>
                             <PokemonList checkResultCallback={this.props.checkResultCallback} crimeProp={this.state.crime} />
                         </>
-                    : <div>
-                        <div>Form Page</div>
-    
+                    :   <div>
+                            <div>Form Page</div>
+
                             <Select
                                 changeHandler={e => {
                                     this.getUserChoice(e, 'userCrimeLocation')
@@ -138,6 +137,7 @@ class Form extends Component {
                             </Button>
             
                             { this.state.errorMessage !== '' ? <ErrorMessage>{this.state.errorMessage}</ErrorMessage> : null}
+                            
                         </div>
                 }
                 

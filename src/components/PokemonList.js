@@ -90,6 +90,17 @@ class PokemonList extends React.Component {
           }
           newPokemonList.push(newPoke);
         });
+
+
+        for(let i = 0; i < newPokemonList.length; i++){
+          const a = newPokemonList[i];
+          
+          const bIndex = Math.floor(Math.random() * newPokemonList.length);
+
+          newPokemonList[i] = newPokemonList[bIndex];
+          newPokemonList[bIndex] = a;
+        }
+
         this.setState({
           currentPokemon: newPokemonList
         })

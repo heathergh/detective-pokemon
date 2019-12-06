@@ -37,7 +37,7 @@ class Header extends Component {
         {
           !this.state.nameChoosen ?
             <div>
-              <p>Some intro text/ rules/description.</p>
+              <p>It is dark times out there. In this new world, Pokemon come to rescue ad support the UK law enforcement. As a detective you will help support the UK police officers with your Pokemon partner! Pick a location and a crime, and then decide which Pokemon partner you'll bring with you to the rescue. Each type of crime requires a different type of Pokemon. What crime will you help solve today?</p>
               <form onSubmit={this.handleNameSubmit}>
                 <label htmlFor="userName">Your name:</label>
                 <input id="userName" type="text" name="userName" value={this.state.userName} onChange={this.handleInputChange} />
