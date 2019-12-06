@@ -10,14 +10,18 @@ class Form extends Component {
         super();
         this.state = {
             crimeLocations: locations,
-            crimeCategories: []
+            crimeCategories: [],
+            userCrimeLocation: '',
+            userCrimeCategory: '',
         }
     }
 
+    // call UK Police API to get crime categories to dynamically populate crime categories select
     componentDidMount() {
         this.callUkApiEndPoint('crime-categories');
     }
 
+    // API call to UK Police API and get crime categories to update state
     callUkApiEndPoint = endPoint => {
         axios({
             url: `https://data.police.uk/api/${endPoint}`,
@@ -29,8 +33,14 @@ class Form extends Component {
         })
     }
 
-    selectChangeHandler = (event) => {
+    // event handler to get option selected by user made with params to populate state passed as argument to make it reusable
+    getUserChoice = (e, stateToUpdate) => {
+        e.preventDefault();
+        console.log(e.target.value);
         
+        this.setState({
+            [stateToUpdate]: e.target.value
+        });
     }
 
     render() {
@@ -38,7 +48,10 @@ class Form extends Component {
             <>
                 <div>Form Page</div>
                 
-                <Select 
+                <Select
+                    changeHandler={e => {
+                        this.getUserChoice(e, 'userCrimeLocation')
+                    }}
                     label={'Crime Locations'}
                     labelFor={'crime-location'}
                     arrayProp={this.state.crimeLocations} optionValue={'poly'}
@@ -47,6 +60,10 @@ class Form extends Component {
                 />
 
                 <Select
+                    changeHandler={e => {
+                        this.getUserChoice(e, 'userCrimeCategory')
+                    }}
+                    onChange={this.getUserChoice}
                     label={'Crime Categories'}
                     labelFor={'crime-category'}
                     arrayProp={this.state.crimeCategories} optionValue={'url'}

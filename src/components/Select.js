@@ -3,7 +3,7 @@ import React from 'react';
 
 // get object from parent
 // get out two dynamic properties: paramName, clientSideName)
-const Select = ({arrayProp, optionValue, optionName, labelFor, selectLabel, selectName}) => {
+const Select = ({arrayProp, optionValue, optionName, labelFor, selectLabel, selectName, changeHandler}) => {
     const elements = arrayProp.map((element, index) => {
         return (
             <option key={index} value={element[optionValue]}>{element[optionName]}</option>
@@ -14,7 +14,11 @@ const Select = ({arrayProp, optionValue, optionName, labelFor, selectLabel, sele
         <>
             <label htmlFor={labelFor}>{selectLabel}</label>
 
-            <select name={selectName} id={labelFor}>
+            <select 
+                name={selectName}
+                id={labelFor}
+                onChange={changeHandler}
+            >
                 <option value="">--Please choose an option--</option>
                 {elements}
             </select> 
