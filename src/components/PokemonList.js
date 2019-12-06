@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import pokemonImages from '../pokemonImageArray';
 import GameResult from './GameResult';
-
+import ErrorMessage from './ErrorMessage';
 import crimes from '../crimes.json';
 
 class PokemonList extends React.Component {
@@ -12,18 +12,19 @@ class PokemonList extends React.Component {
     this.state = {
       currentPokemon: [],
       userSelection: '',
-      correctCrimeInfo: {}
+      correctCrimeInfo: {},
+      errorMessage: ''
     }
   }
   componentDidMount() {
     console.log(this.props.crimeProp);
 
     let correctTypeNumber = 1;
-    for(let key in crimes){
-      if(key === this.props.crimeProp.category){
+    for (let key in crimes) {
+      if (key === this.props.crimeProp.category) {
         correctTypeNumber = crimes[key].successfulType;
         this.setState({
-          correctCrimeInfo: crimes[key] 
+          correctCrimeInfo: crimes[key]
         })
       }
     }
@@ -54,7 +55,7 @@ class PokemonList extends React.Component {
       response.forEach((data) => {
 
         let listOfPokemon = data.data.pokemon;
- 
+
 
         listOfPokemon = listOfPokemon.filter((pokemon) => {
           const url = pokemon.pokemon.url;
@@ -66,7 +67,7 @@ class PokemonList extends React.Component {
           return true;
         })
 
-        const choice = this.getRandomNumber(listOfPokemon.length-1);
+        const choice = this.getRandomNumber(listOfPokemon.length - 1);
 
 
 
@@ -92,7 +93,7 @@ class PokemonList extends React.Component {
         });
 
 
-        for(let i = 0; i < newPokemonList.length; i++){
+        for (let i = 0; i < newPokemonList.length; i++) {
           const a = newPokemonList[i];
 
           const bIndex = Math.floor(Math.random() * newPokemonList.length);
@@ -113,7 +114,7 @@ class PokemonList extends React.Component {
     return Math.floor(Math.random() * max) + 1;
   }
   capitalizeWord = (word) => {
-    let newWord = word.substring(0,1).toUpperCase() + word.substring(1, word.length);
+    let newWord = word.substring(0, 1).toUpperCase() + word.substring(1, word.length);
     return newWord;
   }
 
@@ -125,8 +126,12 @@ class PokemonList extends React.Component {
 
   returnedSelection = (e) => {
     e.preventDefault();
-    if(this.state.userSelection !== ''){
+    if (this.state.userSelection !== '') {
       this.props.checkResultCallback(this.props.crimeProp, this.state.currentPokemon[this.state.userSelection], this.state.correctCrimeInfo);
+    } else {
+      this.setState({
+        errorMessage: "Please select a pokemon!"
+      })
     }
   }
 
@@ -137,21 +142,22 @@ class PokemonList extends React.Component {
           <legend> Select the pokemon to help you with the case:</legend>
           {this.state.currentPokemon.map((poke, i) => {
             return (
-              <div key={poke.id+i}>
-                <img src={pokemonImages[poke.id-1]} alt={`here is${poke.name}`} />
+              <div key={poke.id + i}>
+                <img src={pokemonImages[poke.id - 1]} alt={`here is${poke.name}`} />
                 <input type="radio" name="pokemon" id={poke.id} value={i} checked={parseInt(this.state.userSelection) === i} onChange={this.handleOptionChange} />
                 <label htmlFor={poke.id}>{poke.name}</label>
                 {poke.types.map((type, i) => {
                   return (
-                   <p key={type.type.name+i}>{type.type.name}</p>
+                    <p key={type.type.name + i}>{type.type.name}</p>
                   )
-               
+
                 })}
-                
+
               </div>
             )
           })}
-          <button id="submit" onClick={this.returnedSelection}>Start investigation!</button>  
+          <button id="submit" onClick={this.returnedSelection}>Start investigation!</button>
+          {this.state.errorMessage !== '' ? <ErrorMessage id={'error-description'}>{this.state.errorMessage}</ErrorMessage> : null}
         </form>
       </div>
 
