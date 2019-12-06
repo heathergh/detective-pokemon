@@ -17,7 +17,8 @@ class Form extends Component {
             errorMessage: '',
             // TODO: Remove if we do not reach this stretch goal
             // errorMessageCount: 0,
-            crime: {},
+            // TODO: Remove if we do not reach stretch goal to display more crime info
+            // crime: {},
             categoryValid: false,
             locationValid: false,
             showPokemon: false
@@ -55,24 +56,30 @@ class Form extends Component {
         });
     }
 
+    // click handler that checks if a category and/or location has been selected by the user
+    // if form is valid, call API
     clickHandler = (e, category, location) => {
         e.preventDefault();
 
+        // if a category and location is not selected, display an error
         if (!this.state.userCrimeCategory && !this.state.userCrimeLocation ) {
             this.setState({
                 errorMessage: "Error: Please select a category and a location"
             })
         } else if (!this.state.userCrimeCategory && this.state.userCrimeLocation) {
+            // if location is selected, display error message for category select, and change locationValid to true
             this.setState({
                 locationValid: true,
                 errorMessage: "Error: Please select a category"
             })
         } else if (this.state.userCrimeCategory && !this.state.userCrimeLocation) {
+            // if category is selected, display error message for location select, and change categoryValid to true
             this.setState({
                 categoryValid: true,
                 errorMessage: "Error: Please select a location"
             })
         } else {
+            // if the form is valid, set locationValid and categoryValid to valid, clear error message, and invoke api call as a callback after setting state
             this.setState({
                 locationValid: true,
                 categoryValid: true,
@@ -83,7 +90,7 @@ class Form extends Component {
         }
     }
 
-    // onClick event handler to call UK Police API to get user selected crimes in user selected location
+    // axios call UK Police API to get user selected crimes in user selected location
     ukPoliceApiCall = (category, location) => {
         axios({
             url: `https://data.police.uk/api/crimes-street/${category}`,
@@ -93,11 +100,13 @@ class Form extends Component {
                 month: '2019-11'
             }
         }).then(response =>  {
-            const randomIndex = this.getRandomIndex(response.data.length);
+            // TODO: Remove this if we don't reach stretch goal
+            // const randomIndex = this.getRandomIndex(response.data.length);
 
             if (response.data.length) {
                 this.setState({
-                    crime: response.data[randomIndex],
+                    // TODO: Remove this if we don't reach stretch goal
+                    // crime: response.data[randomIndex],
                     errorMessage: ''
                 }, () => {
                     // placeholder for Pokemon function invocation
@@ -174,7 +183,7 @@ class Form extends Component {
                             { this.state.errorMessage !== '' ? <ErrorMessage id={'error-description'}>{this.state.errorMessage}</ErrorMessage> : null }
                         </form>
                     </div>
-            }
+                }
             </>
         )
     }
