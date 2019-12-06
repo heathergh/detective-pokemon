@@ -6,6 +6,8 @@ import '../App.css';
 import Form from './Form';
 import PokemonList from './PokemonList';
 
+import GameResult from './GameResult';
+
 class App extends React.Component {
   constructor() {
     super();
@@ -23,6 +25,34 @@ class App extends React.Component {
     // console.log(crimeHotSpots[0].name);
     // console.log(crimeHotSpots[0].poly);
   }
+<<<<<<< HEAD
+  getCrimeAtLocation = () => {
+    //axios call
+    //url: https://data.police.uk/api/crimes-street/all-crime
+    //params
+    //poly: crimeHotSpots[0].poly
+    //date: "yyyy-mm"
+  };
+  getPokemonChoices = () => {
+    //What do we need from the pokemon?
+    //.name
+    //.sprites.front_default
+    //.sprites.back_default?
+    //.types[#].type.name
+    //.weight?
+    //.moves[#].move.name?
+    //Get a pokemon with a correct type
+    //https://pokeapi.co/api/v2/type/[type-that-works-well-with-the-crime]/
+    //.pokemon[random-number].pokemon.url
+    //Get more details
+    //eg -> https://pokeapi.co/api/v2/pokemon/16/
+    //Get 4 more random pokemon
+    //https://pokeapi.co/api/v2/type/[random-number]
+    //Get more details forEach of these pokemon
+    //using the pokemon.url eg -> https://pokeapi.co/api/v2/pokemon/[same-random-number]/
+  };
+=======
+>>>>>>> rc-1.0.0
 
   render() {
     return (
@@ -37,7 +67,7 @@ class App extends React.Component {
         {/* Crime Type Select -> map over possible crimes */}
         {/* Map over the possible pokemon */}
         {/* Submit Button */}
-
+        <GameResult />
         {/* Better Luck Next Time Screen */}
         {/* You Win Screen */}
       </div>
