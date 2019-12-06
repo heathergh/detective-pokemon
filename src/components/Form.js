@@ -89,44 +89,56 @@ class Form extends Component {
         })
     }
 
+    getLocationName = (location) => {
+        for(let key in this.state.crimeLocations){
+            if(this.state.crimeLocations[key].poly === location){
+                return this.state.crimeLocations[key].name;
+            }
+        }
+    }
+
     render() {
         return (
             <>
-                <div>Form Page</div>
-
-                <Select
-                    changeHandler={e => {
-                        this.getUserChoice(e, 'userCrimeLocation')
-                    }}
-                    label={'Crime Locations'}
-                    labelFor={'crime-location'}
-                    arrayProp={this.state.crimeLocations} optionValue={'poly'}
-                    optionName={'name'}
-                    selectName={'crime-locations'}
-                />
-
-                <Select
-                    changeHandler={e => {
-                        this.getUserChoice(e, 'userCrimeCategory')
-                    }}
-                    onChange={this.getUserChoice}
-                    label={'Crime Categories'}
-                    labelFor={'crime-category'}
-                    arrayProp={this.state.crimeCategories} optionValue={'url'}
-                    optionName={'name'}
-                    selectName={'crime-categories'}
-                />
-
-                <Button onClick={e => { this.clickHandler(e, this.state.userCrimeCategory, this.state.userCrimeLocation)}}>
-                    Get Pokemon Helpers
-                </Button>
-
-                { this.state.errorMessage !== '' ? <ErrorMessage>{this.state.errorMessage}</ErrorMessage> : null}
-                
                 {
                     this.state.showPokemon
-                    ? <PokemonList checkResultCallback={this.props.checkResultCallback} crimeProp={this.state.crime} />
-                    : null
+                    ?   <> 
+                    
+                            <p>You're in {this.getLocationName(this.state.userCrimeLocation)} solving a case about {this.state.userCrimeCategory}.</p>
+                            <PokemonList checkResultCallback={this.props.checkResultCallback} crimeProp={this.state.crime} />
+                        </>
+                    : <div>
+                        <div>Form Page</div>
+    
+                            <Select
+                                changeHandler={e => {
+                                    this.getUserChoice(e, 'userCrimeLocation')
+                                }}
+                                label={'Crime Locations'}
+                                labelFor={'crime-location'}
+                                arrayProp={this.state.crimeLocations} optionValue={'poly'}
+                                optionName={'name'}
+                                selectName={'crime-locations'}
+                            />
+            
+                            <Select
+                                changeHandler={e => {
+                                    this.getUserChoice(e, 'userCrimeCategory')
+                                }}
+                                onChange={this.getUserChoice}
+                                label={'Crime Categories'}
+                                labelFor={'crime-category'}
+                                arrayProp={this.state.crimeCategories} optionValue={'url'}
+                                optionName={'name'}
+                                selectName={'crime-categories'}
+                            />
+            
+                            <Button onClick={e => { this.clickHandler(e, this.state.userCrimeCategory, this.state.userCrimeLocation)}}>
+                                Get Pokemon Helpers
+                            </Button>
+            
+                            { this.state.errorMessage !== '' ? <ErrorMessage>{this.state.errorMessage}</ErrorMessage> : null}
+                        </div>
                 }
                 
 

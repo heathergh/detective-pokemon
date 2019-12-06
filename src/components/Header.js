@@ -18,10 +18,14 @@ class Header extends Component {
 
   handleNameSubmit = (e) => {
     e.preventDefault();
-    this.setState({
-      nameChoosen: true
-    })
-    this.props.nameSubmit();
+    if(this.state.userName !== ''){
+      this.setState({
+        nameChoosen: true
+      });
+      this.props.nameSubmit();
+    }else{
+      alert("Please enter a name!");
+    }
   }
 
   render() {

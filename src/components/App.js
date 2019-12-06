@@ -33,19 +33,19 @@ class App extends React.Component {
   }
 
   checkResult = (crimeInfo, pokemonChoice, correctCrimeChoice) => {
-    console.log(crimeInfo, pokemonChoice, correctCrimeChoice);
-
-    // .category
-    // .types[#].type
+    // console.log(crimeInfo, pokemonChoice, correctCrimeChoice);
     const newResult = {};
-    if(pokemonChoice.types[0].type.name === correctCrimeChoice.typeName){
-      console.log("correct choice");
-      newResult.resultOfGame = true;
-      newResult.reasonForSuccess = correctCrimeChoice.reason;
-    }else{
-      newResult.resultOfGame = false;
-      newResult.reasonForSuccess = pokemonChoice.name + " couldn't handle the pressure.";
+
+    newResult.resultOfGame = false;
+    newResult.reasonForSuccess = pokemonChoice.name + " couldn't handle the pressure.";
+
+    for(let i = 0; i < pokemonChoice.types.length; i++){
+      if(pokemonChoice.types[i].type.name === correctCrimeChoice.typeName){
+        newResult.resultOfGame = true;
+        newResult.reasonForSuccess = correctCrimeChoice.reason;
+      }
     }
+
     newResult.pokemonName = pokemonChoice.name;
     newResult.crimeSolved = crimeInfo.category;
     
@@ -64,12 +64,12 @@ class App extends React.Component {
         <Header nameSubmit={() => this.changeScene(1)} />
         {/* Form For User Choices */}
         {
-          this.state.sceneNumber == 1 
+          this.state.sceneNumber === 1 
           ? <Form checkResultCallback = {this.checkResult} />
           : null
         }
         {
-          this.state.sceneNumber == 2
+          this.state.sceneNumber === 2
           ? <GameResult 
               pokemonName={this.state.resultInfo.pokemonName}
               resultOfGame={this.state.resultInfo.resultOfGame}
