@@ -21,7 +21,7 @@ class Header extends Component {
     this.setState({
       nameChoosen: true
     })
-
+    this.props.nameSubmit();
   }
 
   render() {

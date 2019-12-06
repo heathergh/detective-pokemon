@@ -4,7 +4,7 @@ import locations from '../crimeHotSpots.json';
 import Select from './Select';
 import Button from './Button';
 import ErrorMessage from './ErrorMessage';
-
+import PokemonList from './PokemonList';
 
 class Form extends Component {
     constructor() {
@@ -16,7 +16,8 @@ class Form extends Component {
             userCrimeCategory: '',
             errorMessage: '',
             errorMessageCount: 0,
-            crime: {}
+            crime: {},
+            showPokemon: false
         }
     }
 
@@ -71,6 +72,9 @@ class Form extends Component {
                     errorMessage: ''
                 }, () => {
                     // placeholder for Pokemon function invocation
+                    this.setState({
+                        showPokemon: true
+                    })
                 });
             } else {
                 this.setState({
@@ -118,12 +122,14 @@ class Form extends Component {
                 </Button>
 
                 { this.state.errorMessage !== '' ? <ErrorMessage>{this.state.errorMessage}</ErrorMessage> : null}
+                
+                {
+                    this.state.showPokemon
+                    ? <PokemonList checkResultCallback={this.props.checkResultCallback} crimeProp={this.state.crime} />
+                    : null
+                }
+                
 
-                {/* <PokemonList /> */}
-
-                {/* <Button onClick={() => {}}>
-                    Solve the Crime
-                </Button> */}
             </>
         )
     }
