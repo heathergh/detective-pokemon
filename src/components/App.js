@@ -2,7 +2,8 @@ import React from 'react';
 
 import '../App.css';
 
-import crimeHotSpots from '../crimeHotSpots.json';
+
+import Form from './Form';
 
 class App extends React.Component {
   constructor() {
@@ -18,8 +19,8 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
-    console.log(crimeHotSpots[0].name);
-    console.log(crimeHotSpots[0].poly);
+    // console.log(crimeHotSpots[0].name);
+    // console.log(crimeHotSpots[0].poly);
   }
 
   render() {
@@ -28,6 +29,7 @@ class App extends React.Component {
         {/* Header & Static Infomation */}
 
         {/* Form For User Choices */}
+        <Form />
         {/* Name Text Input */}
         {/* Location Select */}
         {/* Crime Type Select -> map over possible crimes */}
