@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Button = props => {
+const Button = ({onClick, firstParam = '', secondParam = '', children}) => {
     return (
-        <button type="submit" className="">{props.children}</button>
+        <button type="submit" className="" onClick={ (e) => onClick(e, firstParam, secondParam)}
+        >{children}</button>
     )
 }
 
