@@ -18,7 +18,7 @@ class Form extends Component {
             // TODO: Remove if we do not reach this stretch goal
             // errorMessageCount: 0,
             // TODO: Remove if we do not reach stretch goal to display more crime info
-            // crime: {},
+            crime: {},
             categoryValid: false,
             locationValid: false,
             showPokemon: false
@@ -101,12 +101,12 @@ class Form extends Component {
             }
         }).then(response =>  {
             // TODO: Remove this if we don't reach stretch goal
-            // const randomIndex = this.getRandomIndex(response.data.length);
+            const randomIndex = this.getRandomIndex(response.data.length);
 
             if (response.data.length) {
                 this.setState({
                     // TODO: Remove this if we don't reach stretch goal
-                    // crime: response.data[randomIndex],
+                    crime: response.data[randomIndex],
                     errorMessage: ''
                 }, () => {
                     // placeholder for Pokemon function invocation
