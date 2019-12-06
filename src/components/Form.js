@@ -183,7 +183,7 @@ class Form extends Component {
                             { this.state.errorMessage !== '' ? <ErrorMessage id={'error-description'}>{this.state.errorMessage}</ErrorMessage> : null }
                         </form>
                     </div>
-            }
+                }
             </>
         )
     }
