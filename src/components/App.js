@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../App.css';
 
-
+import Header from './Header.js';
 import Form from './Form';
 import PokemonList from './PokemonList';
 
@@ -30,7 +30,7 @@ class App extends React.Component {
     return (
       <div>
         {/* Header & Static Infomation */}
-
+        <Header />
         {/* Form For User Choices */}
         <Form />
         <PokemonList />
