@@ -94,7 +94,7 @@ class PokemonList extends React.Component {
 
         for(let i = 0; i < newPokemonList.length; i++){
           const a = newPokemonList[i];
-          
+
           const bIndex = Math.floor(Math.random() * newPokemonList.length);
 
           newPokemonList[i] = newPokemonList[bIndex];
@@ -120,14 +120,14 @@ class PokemonList extends React.Component {
   handleOptionChange = (event) => {
     this.setState({
       userSelection: event.target.value
-    })
-    console.log(this.state.userSelection)
+    });
   }
 
   returnedSelection = (e) => {
     e.preventDefault();
-    // console.log(this.state.currentPokemon[this.state.userSelection]);
-    this.props.checkResultCallback(this.props.crimeProp, this.state.currentPokemon[this.state.userSelection], this.state.correctCrimeInfo);
+    if(this.state.userSelection !== ''){
+      this.props.checkResultCallback(this.props.crimeProp, this.state.currentPokemon[this.state.userSelection], this.state.correctCrimeInfo);
+    }
   }
 
   render() {
