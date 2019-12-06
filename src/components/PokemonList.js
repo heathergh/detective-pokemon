@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 
 import pokemonImages from '../pokemonImageArray';
-import GameResult from './GameResult';
 import ErrorMessage from './ErrorMessage';
 import crimes from '../crimes.json';
 
