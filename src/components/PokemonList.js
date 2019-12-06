@@ -2,22 +2,37 @@ import React from 'react';
 import axios from 'axios';
 
 import pokemonImages from '../pokemonImageArray';
+import GameResult from './GameResult';
+
+import crimes from '../crimes.json';
 
 class PokemonList extends React.Component {
   constructor() {
     super();
     this.state = {
       currentPokemon: [],
-      userSelection: ''
+      userSelection: '',
+      correctCrimeInfo: {}
     }
   }
   componentDidMount() {
+    console.log(this.props.crimeProp);
+
+    let correctTypeNumber = 1;
+    for(let key in crimes){
+      if(key === this.props.crimeProp.category){
+        correctTypeNumber = crimes[key].successfulType;
+        this.setState({
+          correctCrimeInfo: crimes[key] 
+        })
+      }
+    }
 
     const pokemonTypePromises = [];
 
     const correctType = axios({
       method: 'GET',
-      url: 'https://pokeapi.co/api/v2/type/1',
+      url: `https://pokeapi.co/api/v2/type/${correctTypeNumber}`,
       dataResponse: 'json',
     });
     pokemonTypePromises.push(correctType);
@@ -44,7 +59,7 @@ class PokemonList extends React.Component {
         listOfPokemon = listOfPokemon.filter((pokemon) => {
           const url = pokemon.pokemon.url;
           const index = url.slice(34);
-          if (parseInt(index) > 719) {
+          if (parseInt(index) > 718) {
             return false;
           }
 
@@ -69,12 +84,23 @@ class PokemonList extends React.Component {
         response.forEach((data) => {
           const pokemon = data.data;
           const newPoke = {
-            name: pokemon.name,
+            name: this.capitalizeWord(pokemon.name),
             types: pokemon.types,
             id: pokemon.id,
           }
           newPokemonList.push(newPoke);
         });
+
+
+        for(let i = 0; i < newPokemonList.length; i++){
+          const a = newPokemonList[i];
+
+          const bIndex = Math.floor(Math.random() * newPokemonList.length);
+
+          newPokemonList[i] = newPokemonList[bIndex];
+          newPokemonList[bIndex] = a;
+        }
+
         this.setState({
           currentPokemon: newPokemonList
         })
@@ -86,18 +112,22 @@ class PokemonList extends React.Component {
   getRandomNumber = (max) => {
     return Math.floor(Math.random() * max) + 1;
   }
-
+  capitalizeWord = (word) => {
+    let newWord = word.substring(0,1).toUpperCase() + word.substring(1, word.length);
+    return newWord;
+  }
 
   handleOptionChange = (event) => {
     this.setState({
       userSelection: event.target.value
-    })
-    console.log(this.state.userSelection)
+    });
   }
 
   returnedSelection = (e) => {
-  e.preventDefault();
-   console.log(this.state.currentPokemon[this.state.userSelection])
+    e.preventDefault();
+    if(this.state.userSelection !== ''){
+      this.props.checkResultCallback(this.props.crimeProp, this.state.currentPokemon[this.state.userSelection], this.state.correctCrimeInfo);
+    }
   }
 
   render() {
