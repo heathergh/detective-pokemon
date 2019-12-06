@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import pokemonImages from './pokemonImageArray';
+import pokemonImages from '../pokemonImageArray';
 
 class PokemonList extends React.Component {
   constructor() {
