@@ -114,11 +114,12 @@ class Form extends Component {
                 />
 
                 <Button onClick={e => { this.clickHandler(e, this.state.userCrimeCategory, this.state.userCrimeLocation)}}>
-                    Get Crimes
+                    Get Pokemon Helpers
                 </Button>
 
                 { this.state.errorMessage !== '' ? <ErrorMessage>{this.state.errorMessage}</ErrorMessage> : null}
 
+                {/* <PokemonList /> */}
             </>
         )
     }
