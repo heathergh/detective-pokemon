@@ -4,6 +4,7 @@ import '../App.css';
 
 
 import Form from './Form';
+import PokemonList from './PokemonList';
 
 class App extends React.Component {
   constructor() {
@@ -30,6 +31,7 @@ class App extends React.Component {
 
         {/* Form For User Choices */}
         <Form />
+        <PokemonList />
         {/* Name Text Input */}
         {/* Location Select */}
         {/* Crime Type Select -> map over possible crimes */}
