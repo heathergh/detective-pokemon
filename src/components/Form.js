@@ -15,6 +15,7 @@ class Form extends Component {
             userCrimeLocation: '',
             userCrimeCategory: '',
             errorMessage: '',
+            errorMessageCount: 0,
             crime: {}
         }
     }
@@ -73,7 +74,10 @@ class Form extends Component {
                 });
             } else {
                 this.setState({
-                    errorMessage: 'Sorry, there are no results for that type of crime at the location you selected'
+                    errorMessage: 'Error: there are no results for that type of crime at the location you selected.',
+                    // TODO: Remove if we do not reach this stretch goal
+                    // adding errorMessageCount for stretch goal to display message to user if error message shows up three times
+                    // errorMessageCount: this.state.errorMessageCount + 1
                 })
             }
         }).catch(error => {
@@ -110,11 +114,16 @@ class Form extends Component {
                 />
 
                 <Button onClick={e => { this.clickHandler(e, this.state.userCrimeCategory, this.state.userCrimeLocation)}}>
-                    Get Crimes
+                    Get Pokemon Helpers
                 </Button>
 
                 { this.state.errorMessage !== '' ? <ErrorMessage>{this.state.errorMessage}</ErrorMessage> : null}
 
+                {/* <PokemonList /> */}
+
+                {/* <Button onClick={() => {}}>
+                    Solve the Crime
+                </Button> */}
             </>
         )
     }
