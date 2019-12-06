@@ -2,7 +2,9 @@ import React from 'react';
 
 import '../App.css';
 
-import crimeHotSpots from '../crimeHotSpots.json';
+
+import Form from './Form';
+import PokemonList from './PokemonList';
 
 import GameResult from './GameResult';
 
@@ -20,9 +22,10 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
-    console.log(crimeHotSpots[0].name);
-    console.log(crimeHotSpots[0].poly);
+    // console.log(crimeHotSpots[0].name);
+    // console.log(crimeHotSpots[0].poly);
   }
+<<<<<<< HEAD
   getCrimeAtLocation = () => {
     //axios call
     //url: https://data.police.uk/api/crimes-street/all-crime
@@ -48,6 +51,8 @@ class App extends React.Component {
     //Get more details forEach of these pokemon
     //using the pokemon.url eg -> https://pokeapi.co/api/v2/pokemon/[same-random-number]/
   };
+=======
+>>>>>>> rc-1.0.0
 
   render() {
     return (
@@ -55,6 +60,8 @@ class App extends React.Component {
         {/* Header & Static Infomation */}
 
         {/* Form For User Choices */}
+        <Form />
+        <PokemonList />
         {/* Name Text Input */}
         {/* Location Select */}
         {/* Crime Type Select -> map over possible crimes */}
