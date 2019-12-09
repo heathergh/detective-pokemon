@@ -1,4 +1,10 @@
+@import 'fonts';
+
 @include mq-mobile {
+  html {
+    font-size: $baseFontSize;
+  }
+
   button {
     background-color: $primaryColor;
     border: 2px solid $secondaryColor;
@@ -10,6 +16,7 @@
   }
 
   p, label {
+    font-size: 1.95rem;
     font-family: $barlowFontFamily;
   }
 }

@@ -181,6 +181,9 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 @media (min-width: 320px) {
+  html {
+    font-size: 62.5%;
+  }
   button {
     background-color: #273878;
     border: 2px solid #e5fecc;
@@ -190,6 +193,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     font-family: "Iceberg", cursive;
   }
   p, label {
+    font-size: 1.95rem;
     font-family: "Barlow", sans-serif;
   }
 }
