@@ -2,6 +2,9 @@
   .form-wrapper {
     button {
       width: 99%;
+      padding: 0;
+      height: 40px;
+      max-width: 352px;
     }
     .selects-wrapper {
       p, label {
@@ -39,7 +42,15 @@
 }
 
 @include mq-tablet {
-
+  .selects-wrapper {
+    display: flex;
+    .select-wrapper {
+      width: calc(50% - 20px);
+      &:first-of-type {
+        margin-right: 20px;
+      }
+    }
+  }
 }
 
 @include mq-desktop {
