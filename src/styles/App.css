@@ -217,6 +217,9 @@ body {
     font-size: 1.95rem;
     font-family: "Barlow", sans-serif;
   }
+  .normalize-text {
+    text-transform: lowercase;
+  }
 }
 
 @media (min-width: 320px) {

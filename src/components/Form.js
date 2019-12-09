@@ -143,7 +143,7 @@ class Form extends Component {
             {
                 this.state.showPokemon
                 ?   <> 
-                        <p>You're in {this.state.userNiceLocationName} solving a case about {this.state.userNiceCategoryName}.</p>
+                        <p>You're in {this.state.userNiceLocationName} solving a case about <span className="normalize-text">{this.state.userNiceCategoryName}</span>.</p>
                         <PokemonList checkResultCallback={this.props.checkResultCallback} crimeProp={this.state.crime} niceCrimeName={this.state.userNiceCategoryName} />
                     </>
                 :   <div>

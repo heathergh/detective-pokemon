@@ -38,6 +38,10 @@ body {
     font-size: 1.95rem;
     font-family: $barlowFontFamily;
   }
+
+  .normalize-text {
+    text-transform: lowercase;
+  }
 }
 
 @include mq-tablet {
