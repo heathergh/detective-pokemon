@@ -1,5 +1,29 @@
-button {
-  background-color: $primaryColor;
-  border: 2px solid $secondaryColor;
-  color: $secondaryColor;
+@import 'fonts';
+
+@media mq-mobile {
+  button {
+    background-color: $primaryColor;
+    border: 2px solid $secondaryColor;
+    color: $secondaryColor;
+  }
+
+  h1, button {
+    font-family: $icebergFontFamily;
+  }
+
+  p, label {
+    font-family: $barlowFontFamily;
+  }
+}
+
+@media mq-tablet {
+
+}
+
+@media mq-desktop {
+
+}
+
+@media mq-retina {
+
 }
