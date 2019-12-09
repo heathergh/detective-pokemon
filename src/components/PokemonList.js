@@ -16,8 +16,6 @@ class PokemonList extends React.Component {
     }
   }
   componentDidMount() {
-    console.log(this.props.crimeProp);
-
     let correctTypeNumber = 1;
     for (let key in crimes) {
       if (key === this.props.crimeProp.category) {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../App.css';
+import '../styles/App.css';
 
 import Header from './Header.js';
 import Form from './Form';
@@ -47,9 +47,7 @@ class App extends React.Component {
     }
 
     newResult.pokemonName = pokemonChoice.name;
-    newResult.crimeSolved = crimeInfo.category;
-    
-    
+    newResult.crimeSolved = crimeInfo.nice_category_name;
     this.setState({
       sceneNumber: 2,
       resultInfo: newResult
