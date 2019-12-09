@@ -10,7 +10,7 @@ class PokemonList extends React.Component {
     super();
     this.state = {
       currentPokemon: [],
-      userSelection: 2,
+      userSelection: '',
       correctCrimeInfo: {},
       errorMessage: ''
     }
@@ -140,7 +140,7 @@ class PokemonList extends React.Component {
           <div className="pokemonFlex">
             {this.state.currentPokemon.map((poke, i) => {
               return (
-                <div key={poke.id + i}>
+                <div key={i}>
                   
                   <input type="radio" name="pokemon" id={poke.id} value={i} checked={parseInt(this.state.userSelection) === i} onChange={this.handleOptionChange} />
                   <label htmlFor={poke.id}>
@@ -151,7 +151,7 @@ class PokemonList extends React.Component {
                         poke.types.map((type, i) => {
                           return (
                             
-                            <span key={type.type.name + i}>{i > 0 ? ' & ' : ''}{type.type.name}</span>
+                            <span key={type.type.name}>{i > 0 ? ' & ' : ''}{type.type.name}</span>
                           )
                         })
                       }
