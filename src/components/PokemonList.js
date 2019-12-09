@@ -27,15 +27,12 @@ class PokemonList extends React.Component {
     }
 
     const pokemonTypePromises = [];
-
     const correctType = axios({
       method: 'GET',
       url: `https://pokeapi.co/api/v2/type/${correctTypeNumber}`,
       dataResponse: 'json',
     });
     pokemonTypePromises.push(correctType);
-
-
 
     for (let i = 0; i < 4; i++) {
       const otherChoice = axios({
@@ -47,13 +44,9 @@ class PokemonList extends React.Component {
     }
 
     axios.all(pokemonTypePromises).then((response) => {
-
       const specificPokemonPromises = [];
       response.forEach((data) => {
-
         let listOfPokemon = data.data.pokemon;
-
-
         listOfPokemon = listOfPokemon.filter((pokemon) => {
           const url = pokemon.pokemon.url;
           const index = url.slice(34);
@@ -63,13 +56,8 @@ class PokemonList extends React.Component {
 
           return true;
         })
-
         const choice = this.getRandomNumber(listOfPokemon.length - 1);
-
-
-
         const chosenPokemon = listOfPokemon[choice].pokemon;
-
         const specificCall = axios({
           method: 'GET',
           url: chosenPokemon.url,
@@ -77,6 +65,7 @@ class PokemonList extends React.Component {
         });
         specificPokemonPromises.push(specificCall);
       });
+      
       axios.all(specificPokemonPromises).then((response) => {
         const newPokemonList = [];
         response.forEach((data) => {
@@ -88,23 +77,17 @@ class PokemonList extends React.Component {
           }
           newPokemonList.push(newPoke);
         });
-
-
         for (let i = 0; i < newPokemonList.length; i++) {
           const a = newPokemonList[i];
-
           const bIndex = Math.floor(Math.random() * newPokemonList.length);
-
           newPokemonList[i] = newPokemonList[bIndex];
           newPokemonList[bIndex] = a;
         }
-
         this.setState({
           currentPokemon: newPokemonList
         })
       })
     });
-
   }
 
   getRandomNumber = (max) => {
@@ -141,7 +124,6 @@ class PokemonList extends React.Component {
             {this.state.currentPokemon.map((poke, i) => {
               return (
                 <div key={i}>
-                  
                   <input type="radio" name="pokemon" id={poke.id} value={i} checked={parseInt(this.state.userSelection) === i} onChange={this.handleOptionChange} />
                   <label htmlFor={poke.id}>
                     <img src={pokemonImages[poke.id - 1]} alt={`here is${poke.name}`} />
@@ -150,14 +132,12 @@ class PokemonList extends React.Component {
                       {
                         poke.types.map((type, i) => {
                           return (
-                            
                             <span key={type.type.name}>{i > 0 ? ' & ' : ''}{type.type.name}</span>
                           )
                         })
                       }
                     </div>
                   </label>
-  
                 </div>
               )
             })}
@@ -166,9 +146,6 @@ class PokemonList extends React.Component {
           {this.state.errorMessage !== '' ? <ErrorMessage id={'error-description'}>{this.state.errorMessage}</ErrorMessage> : null}
         </form>
       </div>
-
-
-
     );
   }
 };
