@@ -13,7 +13,9 @@ class Form extends Component {
             crimeLocations: locations,
             crimeCategories: [],
             userCrimeLocation: '',
+            userNiceLocationName: '',
             userCrimeCategory: '',
+            userNiceCategoryName: '',
             errorMessage: '',
             // TODO: Remove if we do not reach this stretch goal
             // errorMessageCount: 0,
@@ -50,11 +52,15 @@ class Form extends Component {
     }
 
     // event handler to get option selected by user made with params to populate state passed as argument to make it reusable
-    getUserInput = (e, stateToUpdate) => {
+    getUserInput = (e, firstStateToUpdate, secondStateToUpdate) => {
         e.preventDefault();
+
+        const index = e.nativeEvent.target.selectedIndex;
         
         this.setState({
-            [stateToUpdate]: e.target.value
+            [firstStateToUpdate]: e.target.value,
+            [secondStateToUpdate]: e.nativeEvent.target[index].text
+
         });
     }
 
@@ -153,7 +159,7 @@ class Form extends Component {
                         >
                             <Select
                                 changeHandler={e => {
-                                    this.getUserInput(e, 'userCrimeLocation')
+                                    this.getUserInput(e, 'userCrimeLocation', 'userNiceLocationName')
                                 }}
                                 label={'Crime Locations'}
                                 labelFor={'crime-location'}
@@ -166,7 +172,7 @@ class Form extends Component {
 
                             <Select
                                 changeHandler={e => {
-                                    this.getUserInput(e, 'userCrimeCategory')
+                                    this.getUserInput(e, 'userCrimeCategory', 'userNiceCategoryName')
                                 }}
                                 onChange={this.getUserInput}
                                 label={'Crime Categories'}
