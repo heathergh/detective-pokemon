@@ -88,7 +88,6 @@ class PokemonList extends React.Component {
         this.setState({
           currentPokemon: newPokemonList
         })
-        this.scrollToBottom();
       })
     });
   }
@@ -102,6 +101,9 @@ class PokemonList extends React.Component {
   }
 
   handleOptionChange = (event) => {
+    if(window.innerWidth > 1080){
+      this.scrollToBottom();
+    }
     this.setState({
       userSelection: event.target.value
     });

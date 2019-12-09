@@ -535,7 +535,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 75%;
+  width: 100%;
   padding: 25px 0;
 }
 
@@ -550,6 +550,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 .pokemonFlex input {
   opacity: 0;
   position: absolute;
+  width: 0;
 }
 
 .pokemonFlex img {
@@ -565,6 +566,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   width: 100%;
+  overflow: hidden;
 }
 
 .pokemonFlex .pokeballLoader .pokeball {
@@ -617,7 +619,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .pokemonFlex > div {
-  width: calc(90% - 20px);
+  width: 100%;
   margin: 10px;
   text-align: center;
 }
@@ -626,12 +628,21 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   margin: 0;
 }
 
+@media (min-width: 500px) {
+  .pokemonFlex > div {
+    width: calc(50% - 20px);
+    margin: 10px;
+    text-align: center;
+  }
+}
+
 @media (min-width: 768px) {
   .pokemonFlex {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+    width: 90%;
   }
   .pokemonFlex > div {
     width: calc(100%/3 - 10px);
