@@ -124,7 +124,7 @@ class PokemonList extends React.Component {
   returnedSelection = (e) => {
     e.preventDefault();
     if (this.state.userSelection !== '') {
-      this.props.checkResultCallback(this.props.crimeProp, this.state.currentPokemon[this.state.userSelection], this.state.correctCrimeInfo);
+      this.props.checkResultCallback(this.props.crimeProp, this.props.niceCrimeName, this.state.currentPokemon[this.state.userSelection], this.state.correctCrimeInfo);
     } else {
       this.setState({
         errorMessage: "Please select a pokemon!"

@@ -32,7 +32,7 @@ class App extends React.Component {
     })
   }
 
-  checkResult = (crimeInfo, pokemonChoice, correctCrimeChoice) => {
+  checkResult = (crimeInfo, crimeCategory, pokemonChoice, correctCrimeChoice) => {
     // console.log(crimeInfo, pokemonChoice, correctCrimeChoice);
     const newResult = {};
 
@@ -47,7 +47,7 @@ class App extends React.Component {
     }
 
     newResult.pokemonName = pokemonChoice.name;
-    newResult.crimeSolved = crimeInfo.nice_category_name;
+    newResult.crimeSolved = crimeCategory;
     this.setState({
       sceneNumber: 2,
       resultInfo: newResult
