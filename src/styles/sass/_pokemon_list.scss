@@ -9,17 +9,8 @@
     bottom: 60px;
   }
 }
-.pokeballLoader {
-  animation: pokeballSpin 1s infinite linear;
-}
-@keyframes pokeballSpin {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+
+
 .pokemonTypes {
   width: 100%;
   display: flex;
@@ -35,11 +26,11 @@
   border-radius: 50px;
   padding: 5px 10px 8px;
   border: 1px solid $primaryColor;
-  text-shadow: 0 0 1px $primaryColor;
 }
 
 .normal {
   background-color: #CCC7C0;
+  color: #222;
 }
 .fighting {
   background-color: #763217;
@@ -64,6 +55,7 @@
 }
 .steel {
   background-color: #C3C3CF;
+  color: #222;
 }
 .fire {
   background-color: #E74D03;
@@ -82,6 +74,7 @@
 }
 .ice {
   background-color: #B1EBFE;
+  color: #222;
 }
 .dragon {
   background-color: #8776E1;
@@ -91,14 +84,25 @@
 }
 .fairy {
   background-color: #F4BBF3;
+  color: #222;
 }
 
+@keyframes pokeballSpin {
+  0% {
+    transform: translateX(-100px) rotate(-10deg);
+  }
+  100% {
+    transform: translateX(100px) rotate(370deg);
+  }
+}
 .pokemonFlex {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+
+  width:75%;
 
   padding: 25px 0;
   h2 {
@@ -117,6 +121,14 @@
     max-width: 100%;
     height: 125px;
     display: block;
+  }
+  .pokeballLoader {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    .pokeball {
+      animation: pokeballSpin 1s infinite linear alternate;
+    }
   }
 
   label {

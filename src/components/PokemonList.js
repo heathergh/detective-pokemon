@@ -5,6 +5,8 @@ import pokemonImages from '../pokemonImageArray';
 import ErrorMessage from './ErrorMessage';
 import crimes from '../crimes.json';
 
+import pokeball from '../assets/pokeball.svg';
+
 class PokemonList extends React.Component {
   constructor() {
     super();
@@ -151,7 +153,11 @@ class PokemonList extends React.Component {
                     </div>
                   )
                 })
-              : <img className="pokeballLoader" src={pokemonImages[Math.floor(Math.random() * pokemonImages.length)]} />
+              : <div className="pokeballLoader">
+                  <div className="pokeball">
+                  	<img src={pokeball} />
+                  </div>
+                </div>
             }
           </div>
           <button id="submit" onClick={this.returnedSelection} ref={(element) => { this.investigationButton = element; }}>Start investigation!</button>
