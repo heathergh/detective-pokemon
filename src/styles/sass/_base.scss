@@ -1,6 +1,4 @@
-@import 'fonts';
-
-@media mq-mobile {
+@include mq-mobile {
   button {
     background-color: $primaryColor;
     border: 2px solid $secondaryColor;
@@ -16,14 +14,14 @@
   }
 }
 
-@media mq-tablet {
+@include mq-tablet {
 
 }
 
-@media mq-desktop {
+@include mq-desktop {
 
 }
 
-@media mq-retina {
+@include mq-retina {
 
 }
