@@ -146,37 +146,38 @@ class Form extends Component {
                         <p>You're in {this.state.userNiceLocationName} solving a case about <span className="normalize-text">{this.state.userNiceCategoryName}</span>.</p>
                         <PokemonList checkResultCallback={this.props.checkResultCallback} crimeProp={this.state.crime} niceCrimeName={this.state.userNiceCategoryName} />
                     </>
-                :   <div>
-                        <div>Form Page</div>
-                        <form
-                            // onSubmit="placeholder for onSubmit function to get pokemon"
-                        >
-                            <Select
-                                changeHandler={e => {
-                                    this.getUserInput(e, 'userCrimeLocation', 'userNiceLocationName')
-                                }}
-                                label={'Crime Locations'}
-                                labelFor={'crime-location'}
-                                arrayProp={this.state.crimeLocations}
-                                optionValue={'poly'}
-                                optionName={'name'}
-                                selectName={'crime-locations'}
-                                isValid={this.state.locationValid}
-                            />
+                :   <div className="form-wrapper">
+                        <form>
+                            <div className="select-wrapper">
+                                <Select
+                                    changeHandler={e => {
+                                        this.getUserInput(e, 'userCrimeLocation', 'userNiceLocationName')
+                                    }}
+                                    label={'Crime Locations'}
+                                    labelFor={'crime-location'}
+                                    arrayProp={this.state.crimeLocations}
+                                    optionValue={'poly'}
+                                    optionName={'name'}
+                                    selectName={'crime-locations'}
+                                    isValid={this.state.locationValid}
+                                />
+                            </div>
 
-                            <Select
-                                changeHandler={e => {
-                                    this.getUserInput(e, 'userCrimeCategory', 'userNiceCategoryName')
-                                }}
-                                onChange={this.getUserInput}
-                                label={'Crime Categories'}
-                                labelFor={'crime-category'}
-                                arrayProp={this.state.crimeCategories}
-                                optionValue={'url'}
-                                optionName={'name'}
-                                selectName={'crime-categories'}
-                                isValid={this.state.categoryValid}
-                            />
+                            <div className="select-wrapper">
+                                <Select
+                                    changeHandler={e => {
+                                        this.getUserInput(e, 'userCrimeCategory', 'userNiceCategoryName')
+                                    }}
+                                    onChange={this.getUserInput}
+                                    label={'Crime Categories'}
+                                    labelFor={'crime-category'}
+                                    arrayProp={this.state.crimeCategories}
+                                    optionValue={'url'}
+                                    optionName={'name'}
+                                    selectName={'crime-categories'}
+                                    isValid={this.state.categoryValid}
+                                />
+                            </div>
 
                             <Button onClick={e => { this.clickHandler(e, this.state.userCrimeCategory, this.state.userCrimeLocation)}}>
                                 Get Pokemon Helpers
