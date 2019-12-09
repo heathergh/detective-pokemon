@@ -1,4 +1,10 @@
 @include mq-mobile {
+  header {
+    padding: 25px 0px;
+    div {
+      padding-top:15px;
+    }
+  }
 h1 {
   // animation: flicker 3s infinite alternate;
   border: 0.4rem solid #fff;
@@ -48,18 +54,66 @@ h1:focus {
     }
 }
 
+h2 {
+  font-size: 2.5rem;
+  text-align:center;
+}
+
+p {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  input {
+    padding: 1rem 2rem;
+    margin: 1rem 0px;
+    &:focus{
+      background-color: $secondaryColor;
+    }
+  }
+  button {
+    padding: 1rem 8.5rem;
+    
+  }
+}
+
 }
 
 @include mq-tablet {
+  header {
+    padding: 40px 0px;
+    div {
+      padding-top:40px;
+    }
+  }
+
   h1 {
 
     font-size: 8rem;
     padding: 2rem 4rem 2.7rem;
   }
 
+  h2 {
+  font-size: 3rem;
+}
+  form button {
+    padding: 1rem 7.7rem;
+  }
+
 }
 
 @include mq-desktop {
+  form {
+    padding-top: 1rem;
+  }
+  h2 {
+  font-size: 4rem;
+  
+}
 
 }
 
