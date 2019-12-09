@@ -86,6 +86,7 @@ class PokemonList extends React.Component {
         this.setState({
           currentPokemon: newPokemonList
         })
+        this.scrollToBottom();
       })
     });
   }
@@ -113,6 +114,13 @@ class PokemonList extends React.Component {
         errorMessage: "Please select a pokemon!"
       })
     }
+  }
+
+  /* Scroll code found at: */
+  /* https://stackoverflow.com/questions/37620694/how-to-scroll-to-bottom-in-react */
+  investigationButton = React.createRef();
+  scrollToBottom = () => {
+    this.investigationButton.scrollIntoView({ behavior: 'smooth' })
   }
 
   render() {
@@ -146,7 +154,7 @@ class PokemonList extends React.Component {
               : <img className="pokeballLoader" src={pokemonImages[Math.floor(Math.random() * pokemonImages.length)]} />
             }
           </div>
-          <button id="submit" onClick={this.returnedSelection}>Start investigation!</button>
+          <button id="submit" onClick={this.returnedSelection} ref={(element) => { this.investigationButton = element; }}>Start investigation!</button>
           {this.state.errorMessage !== '' ? <ErrorMessage id={'error-description'}>{this.state.errorMessage}</ErrorMessage> : null}
         </form>
       </div>
