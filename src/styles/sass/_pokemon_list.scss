@@ -22,69 +22,70 @@
   }
 }
 .pokemonTypeSpan {
-  color: #fff;
+  color: $primaryWhite;
   border-radius: 50px;
   padding: 5px 10px 8px;
   border: 1px solid $primaryColor;
 }
 
 .normal {
-  background-color: #CCC7C0;
-  color: #222;
+  background-color: $normal;
+  color: $almostBlack;
 }
 .fighting {
-  background-color: #763217;
+  background-color: $fighting;
 }
 .flying {
-  background-color: #99ACEE;
+  background-color: $flying;
 }
 .poison {
-  background-color: #A45CA4;
+  background-color: $poison;
 }
 .ground {
-  background-color: #D4B661;
+  background-color: $ground;
 }
 .rock {
-  background-color: #C4AD68;
+  background-color: $rock;
 }
 .bug {
-  background-color: #A9B41D;
+  background-color: $bug;
 }
 .ghost {
-  background-color: #6F73BB;
+  background-color: $ghost;
 }
 .steel {
-  background-color: #C3C3CF;
-  color: #222;
+  background-color: $steel;
+  color: $almostBlack;
 }
 .fire {
-  background-color: #E74D03;
+  background-color: $fire;
 }
 .water {
-  background-color: #42ABFC;
+  background-color: $water;
 }
 .grass {
-  background-color: #78C33A;
+  background-color: $grass;
 }
 .electric {
-  background-color: #EDA300;
+  background-color: $electric;
+  color: $almostBlack;
 }
 .psychic {
-  background-color: #F15F90;
+  background-color: $psychic;
 }
 .ice {
-  background-color: #B1EBFE;
-  color: #222;
+  background-color: $ice;
+  color: $almostBlack;
 }
 .dragon {
-  background-color: #8776E1;
+  background-color: $dragon;
 }
 .dark {
-  background-color: #644D3D;
+  background-color: $dark;
 }
 .fairy {
-  background-color: #F4BBF3;
-  color: #222;
+  background-color: $fairy;
+  color: $almostBlack;
 }
 
 @keyframes pokeballSpin {

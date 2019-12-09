@@ -471,7 +471,8 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .electric {
-  background-color: #EDA300;
+  background-color: #FEC81E;
+  color: #222;
 }
 
 .psychic {
