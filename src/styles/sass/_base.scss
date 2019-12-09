@@ -1,33 +1,44 @@
 @import 'fonts';
 
 
-.wrapper {
-  max-width: 1080px;
-  width: 80%;
-  margin: 0 auto;
-  @include mq-mobile {
+
+@include mq-mobile {
+  html {
+    font-size: $baseFontSize;
+    color: white;
+  }
+
+  .wrapper {
     width: 90%;
   }
-}
+  
 
-body {
-  // background-image: url('../assets/background.jpg');
-  // background-image:linear-gradient(to top right, transparentize($primaryColor, 0.2), transparentize(black, 0.2)), url('../assets/background.jpg');
+  body {
+  background-image:linear-gradient(to top right, transparentize($primaryColor, 0.2), transparentize(black, 0.2)), url('../assets/background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   min-height:100vh;
 }
 
-@include mq-mobile {
-  html {
-    font-size: $baseFontSize;
-  }
-
   button {
-    background-color: $primaryColor;
+    background-color: $primaryAccent;
     border: 2px solid $secondaryColor;
-    color: $secondaryColor;
+    color: $primaryColor;
+    padding: 1rem 2rem;
+    margin: 1rem auto;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    &:hover,
+    &:focus {
+     background-color: lighten($primaryAccent, 20%);
+    }
+    &:active {
+      background-color: darken($primaryAccent, 10%);
+    }
+
+
   }
 
   h1, button {
@@ -49,10 +60,19 @@ body {
 }
 
 @include mq-tablet {
-
+  .wrapper {
+  max-width: 1080px;
+  width: 80%;
+  margin: 0 auto;
+}
+   button {
+    font-size: 2.5rem;
+    padding: 1rem 2.5rem;
+}
 }
 
 @include mq-desktop {
+
 
 }
 
