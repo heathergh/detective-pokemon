@@ -65,7 +65,7 @@ class PokemonList extends React.Component {
         });
         specificPokemonPromises.push(specificCall);
       });
-      
+
       axios.all(specificPokemonPromises).then((response) => {
         const newPokemonList = [];
         response.forEach((data) => {
@@ -119,28 +119,32 @@ class PokemonList extends React.Component {
     return (
       <div className="pokemonList">
         <form className="pokemonList" id="pokemonList">
-          <legend> Select the pokemon to help you with the case:</legend>
+          <legend> Select a pokemon to help you with this case:</legend>
           <div className="pokemonFlex">
-            {this.state.currentPokemon.map((poke, i) => {
-              return (
-                <div key={i}>
-                  <input type="radio" name="pokemon" id={poke.id} value={i} checked={parseInt(this.state.userSelection) === i} onChange={this.handleOptionChange} />
-                  <label htmlFor={poke.id}>
-                    <img src={pokemonImages[poke.id - 1]} alt={`here is${poke.name}`} />
-                    <h2>{poke.name}</h2>
-                    <div className="pokemonTypes">
-                      {
-                        poke.types.map((type, i) => {
-                          return (
-                            <span key={type.type.name}>{i > 0 ? ' & ' : ''}{type.type.name}</span>
-                          )
-                        })
-                      }
+            {
+              this.state.currentPokemon.length > 0
+              ? this.state.currentPokemon.map((poke, i) => {
+                  return (
+                    <div key={i}>
+                      <input type="radio" name="pokemon" id={poke.id} value={i} checked={parseInt(this.state.userSelection) === i} onChange={this.handleOptionChange} />
+                      <label htmlFor={poke.id}>
+                        <img src={pokemonImages[poke.id - 1]} alt={`here is${poke.name}`} />
+                        <h2>{poke.name}</h2>
+                        <div className="pokemonTypes">
+                          {
+                            poke.types.map((type, i) => {
+                              return (
+                                <div key={type.type.name}><span className={`pokemonTypeSpan ${type.type.name}`}>{type.type.name}</span></div>
+                              )
+                            })
+                          }
+                        </div>
+                      </label>
                     </div>
-                  </label>
-                </div>
-              )
-            })}
+                  )
+                })
+              : <img className="pokeballLoader" src={pokemonImages[Math.floor(Math.random() * pokemonImages.length)]} />
+            }
           </div>
           <button id="submit" onClick={this.returnedSelection}>Start investigation!</button>
           {this.state.errorMessage !== '' ? <ErrorMessage id={'error-description'}>{this.state.errorMessage}</ErrorMessage> : null}

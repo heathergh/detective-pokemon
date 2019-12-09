@@ -322,6 +322,134 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   }
 }
 
+.pokemonList legend {
+  font-size: 1.95rem;
+}
+
+.pokeballLoader {
+  -webkit-animation: pokeballSpin 1s infinite linear;
+          animation: pokeballSpin 1s infinite linear;
+}
+
+@-webkit-keyframes pokeballSpin {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes pokeballSpin {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.pokemonTypes {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.pokemonTypes > div {
+  margin: 8px 2.5px;
+}
+
+.pokemonTypeSpan {
+  color: #fff;
+  border-radius: 50px;
+  padding: 5px 10px 8px;
+  border: 1px solid #273878;
+}
+
+.normal {
+  background-color: #CCC7C0;
+}
+
+.fighting {
+  background-color: #763217;
+}
+
+.flying {
+  background-color: #99ACEE;
+}
+
+.poison {
+  background-color: #A45CA4;
+}
+
+.ground {
+  background-color: #D4B661;
+}
+
+.rock {
+  background-color: #C4AD68;
+}
+
+.bug {
+  background-color: #A9B41D;
+}
+
+.ghost {
+  background-color: #6F73BB;
+}
+
+.steel {
+  background-color: #C3C3CF;
+}
+
+.fire {
+  background-color: #E74D03;
+}
+
+.water {
+  background-color: #42ABFC;
+}
+
+.grass {
+  background-color: #78C33A;
+}
+
+.electric {
+  background-color: #EDA300;
+}
+
+.psychic {
+  background-color: #F15F90;
+}
+
+.ice {
+  background-color: #B1EBFE;
+}
+
+.dragon {
+  background-color: #8776E1;
+}
+
+.dark {
+  background-color: #644D3D;
+}
+
+.fairy {
+  background-color: #F4BBF3;
+}
+
 .pokemonFlex {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -338,34 +466,29 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding: 25px 0;
 }
 
-.pokemonFlex > div {
-  width: calc(100%/3 - 10px);
-  margin-right: 10px;
-  text-align: center;
+.pokemonFlex h2 {
+  font-size: 2.5rem;
 }
 
-.pokemonFlex > div:last-of-type {
+.pokemonFlex p {
   margin: 0;
 }
 
-.pokemonFlex > div input {
+.pokemonFlex input {
   opacity: 0;
   position: absolute;
 }
 
-.pokemonFlex > div img {
+.pokemonFlex img {
   max-width: 100%;
-  max-height: 150px;
+  max-height: 125px;
   display: block;
 }
 
-.pokemonFlex > div p {
-  margin: 0;
-}
-
-.pokemonFlex > div label {
+.pokemonFlex label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -380,7 +503,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
       -ms-flex-align: center;
           align-items: center;
   padding: 50px 0;
-  min-height: 400px;
+  min-height: 350px;
   position: relative;
   -webkit-transform: scale(1);
           transform: scale(1);
@@ -394,19 +517,29 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   transition: all 0.3s cubic-bezier(0.47, 0, 0.745, 0.715);
 }
 
-.pokemonFlex > div input:checked + label {
+.pokemonFlex input:checked + label {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
   z-index: 2;
   color: #273878;
-  background-color: #e5fecc;
+  background-color: #b7c1e7;
   overflow: visible;
   -webkit-transition: all 0.25s cubic-bezier(0.39, 0.575, 0.565, 1);
   transition: all 0.25s cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 
-.pokemonFlex > div input:focus + label {
+.pokemonFlex input:focus + label {
   border: #d5c300 2px solid;
+}
+
+.pokemonFlex > div {
+  width: calc(90% - 20px);
+  margin: 10px;
+  text-align: center;
+}
+
+.pokemonFlex > div:last-of-type {
+  margin: 0;
 }
 
 @media (min-width: 768px) {
@@ -417,6 +550,19 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
             flex-direction: row;
   }
   .pokemonFlex > div {
-    width: calc((100% - 40px) /5);
+    width: calc(100%/3 - 10px);
+    margin: 10px 10px 10px 0;
+  }
+}
+
+@media (min-width: 1080px) {
+  .pokemonFlex {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .pokemonFlex > div {
+    width: calc((100% - 40px) / 5);
   }
 }
