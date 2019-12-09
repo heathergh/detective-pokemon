@@ -193,8 +193,6 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 body {
-  background-image: -webkit-gradient(linear, left bottom, right top, from(rgba(39, 56, 120, 0.8)), to(rgba(0, 0, 0, 0.8))), url("../assets/background.jpg");
-  background-image: linear-gradient(to top right, rgba(39, 56, 120, 0.8), rgba(0, 0, 0, 0.8)), url("../assets/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -232,15 +230,14 @@ body {
     border-radius: 5px;
   }
   .error p {
+    color: #9f3a38;
     text-align: center;
     min-width: 200px;
-    max-width: 300px;
+    max-width: 400px;
   }
 }
 
 h1 {
-  -webkit-animation: flicker 3s infinite alternate;
-          animation: flicker 3s infinite alternate;
   border: 0.4rem solid #fff;
   border-radius: 3rem;
   color: #e5fecc;

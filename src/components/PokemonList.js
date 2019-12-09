@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 
 import pokemonImages from '../pokemonImageArray';
 import ErrorMessage from './ErrorMessage';
 import crimes from '../crimes.json';
 
-class PokemonList extends React.Component {
+class PokemonList extends Component {
   constructor() {
     super();
     this.state = {
@@ -65,9 +65,6 @@ class PokemonList extends React.Component {
         })
 
         const choice = this.getRandomNumber(listOfPokemon.length - 1);
-
-
-
         const chosenPokemon = listOfPokemon[choice].pokemon;
 
         const specificCall = axios({
@@ -77,6 +74,7 @@ class PokemonList extends React.Component {
         });
         specificPokemonPromises.push(specificCall);
       });
+
       axios.all(specificPokemonPromises).then((response) => {
         const newPokemonList = [];
         response.forEach((data) => {
@@ -137,31 +135,22 @@ class PokemonList extends React.Component {
       <div className="pokemonList">
         <form className="pokemonList" id="pokemonList">
           <legend> Select the pokemon to help you with the case:</legend>
-          <div className="pokemonFlex">
-            {this.state.currentPokemon.map((poke, i) => {
-              return (
-                <div key={poke.id + i}>
-                  
-                  <input type="radio" name="pokemon" id={poke.id} value={i} checked={parseInt(this.state.userSelection) === i} onChange={this.handleOptionChange} />
-                  <label htmlFor={poke.id}>
-                    <img src={pokemonImages[poke.id - 1]} alt={`here is${poke.name}`} />
-                    <h2>{poke.name}</h2>
-                    <div className="pokemonTypes">
-                      {
-                        poke.types.map((type, i) => {
-                          return (
-                            
-                            <span key={type.type.name + i}>{i > 0 ? ' & ' : ''}{type.type.name}</span>
-                          )
-                        })
-                      }
-                    </div>
-                  </label>
-  
-                </div>
-              )
-            })}
-          </div>
+          {this.state.currentPokemon.map((poke, i) => {
+            return (
+              <div key={poke.id + i}>
+                <img src={pokemonImages[poke.id - 1]} alt={`here is ${poke.name}`} />
+                <input type="radio" name="pokemon" id={poke.id} value={i} checked={parseInt(this.state.userSelection) === i} onChange={this.handleOptionChange} />
+                <label htmlFor={poke.id}>{poke.name}</label>
+                {poke.types.map((type, i) => {
+                  return (
+                    <p key={type.type.name + i}>{type.type.name}</p>
+                  )
+
+                })}
+
+              </div>
+            )
+          })}
           <button id="submit" onClick={this.returnedSelection}>Start investigation!</button>
           {this.state.errorMessage !== '' ? <ErrorMessage id={'error-description'}>{this.state.errorMessage}</ErrorMessage> : null}
         </form>
