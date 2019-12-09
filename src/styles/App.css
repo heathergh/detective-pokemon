@@ -269,7 +269,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 @media (min-width: 320px) {
-  header {
+  body {
     padding: 25px 0px;
   }
   header div {
@@ -341,24 +341,34 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
         -ms-flex-align: center;
             align-items: center;
   }
+  form input,
+  form button {
+    width: 50%;
+  }
   form input {
-    padding: 1rem 2rem;
+    padding: 0.8rem;
     margin: 1rem 0px;
   }
   form input:focus {
     background-color: #e5fecc;
   }
+}
+
+@media (min-width: 320px) and (max-width: 550px) {
+  form input {
+    width: 100%;
+  }
   form button {
-    padding: 1rem 8.5rem;
+    width: 100%;
   }
 }
 
 @media (min-width: 768px) {
-  header {
-    padding: 40px 0px;
+  body {
+    padding: 4rem 0px;
   }
   header div {
-    padding-top: 40px;
+    padding-top: 4rem;
   }
   h1 {
     font-size: 8rem;
@@ -367,8 +377,13 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   h2 {
     font-size: 3rem;
   }
+  form input {
+    width: auto;
+    padding: 1rem 2rem;
+  }
   form button {
     padding: 1rem 7.7rem;
+    width: auto;
   }
 }
 
@@ -483,7 +498,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 @media (min-width: 320px) {
   .headerForResult {
     color: #d5c300;
-    margin: 0px;
+    margin-top: 3rem;
     text-transform: uppercase;
     font-family: "Iceberg", cursive;
     font-size: 3rem;
