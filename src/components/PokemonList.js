@@ -10,7 +10,7 @@ class PokemonList extends React.Component {
     super();
     this.state = {
       currentPokemon: [],
-      userSelection: '',
+      userSelection: 2,
       correctCrimeInfo: {},
       errorMessage: ''
     }
@@ -146,13 +146,16 @@ class PokemonList extends React.Component {
                   <label htmlFor={poke.id}>
                     <img src={pokemonImages[poke.id - 1]} alt={`here is${poke.name}`} />
                     <h2>{poke.name}</h2>
-                    {
-                      poke.types.map((type, i) => {
-                        return (
-                          <p key={type.type.name + i} default={i === 0}>{type.type.name}</p>
-                        )
-                      })
-                    }
+                    <div className="pokemonTypes">
+                      {
+                        poke.types.map((type, i) => {
+                          return (
+                            
+                            <span key={type.type.name + i}>{i > 0 ? ' & ' : ''}{type.type.name}</span>
+                          )
+                        })
+                      }
+                    </div>
                   </label>
   
                 </div>
