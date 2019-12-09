@@ -187,6 +187,8 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   }
   .wrapper {
     width: 90%;
+    margin: 0 auto;
+    max-width: 1080px;
   }
   body {
     background-image: -webkit-gradient(linear, left bottom, right top, from(rgba(39, 56, 120, 0.8)), to(rgba(0, 0, 0, 0.8))), url("../assets/background.jpg");
@@ -238,13 +240,14 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 
 @media (min-width: 768px) {
   .wrapper {
-    max-width: 1080px;
     width: 80%;
-    margin: 0 auto;
   }
   button {
     font-size: 2.5rem;
     padding: 1rem 2.5rem;
+  }
+  p, label {
+    font-size: 2.3rem;
   }
 }
 
@@ -266,6 +269,12 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 @media (min-width: 320px) {
+  header {
+    padding: 25px 0px;
+  }
+  header div {
+    padding-top: 15px;
+  }
   h1 {
     border: 0.4rem solid #fff;
     border-radius: 3rem;
@@ -313,12 +322,62 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
               box-shadow: none;
     }
   }
+  h2 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
+  form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  form input {
+    padding: 1rem 2rem;
+    margin: 1rem 0px;
+  }
+  form input:focus {
+    background-color: #e5fecc;
+  }
+  form button {
+    padding: 1rem 8.5rem;
+  }
 }
 
 @media (min-width: 768px) {
+  header {
+    padding: 40px 0px;
+  }
+  header div {
+    padding-top: 40px;
+  }
   h1 {
     font-size: 8rem;
     padding: 2rem 4rem 2.7rem;
+  }
+  h2 {
+    font-size: 3rem;
+  }
+  form button {
+    padding: 1rem 7.7rem;
+  }
+}
+
+@media (min-width: 1080px) {
+  form {
+    padding-top: 1rem;
+  }
+  h2 {
+    font-size: 4rem;
   }
 }
 
