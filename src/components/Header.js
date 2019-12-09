@@ -18,19 +18,19 @@ class Header extends Component {
 
   handleNameSubmit = (e) => {
     e.preventDefault();
-    if(this.state.userName !== ''){
+    if (this.state.userName !== '') {
       this.setState({
         nameChoosen: true
       });
       this.props.nameSubmit();
-    }else{
+    } else {
       alert("Please enter a name!");
     }
   }
 
   render() {
     return (
-      <header>
+      <header className="wrapper">
         <h1>Detective Pokemon</h1>
 
 

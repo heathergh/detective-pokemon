@@ -1,5 +1,24 @@
 @import 'fonts';
 
+
+.wrapper {
+  max-width: 1080px;
+  width: 80%;
+  margin: 0 auto;
+  @include mq-mobile {
+    width: 90%;
+  }
+}
+
+body {
+  // background-image: url('../assets/background.jpg');
+  background-image:linear-gradient(to top right, transparentize($primaryColor, 0.2), transparentize(black, 0.2)), url('../assets/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  min-height:100vh;
+}
+
 @include mq-mobile {
   html {
     font-size: $baseFontSize;
@@ -18,6 +37,10 @@
   p, label {
     font-size: 1.95rem;
     font-family: $barlowFontFamily;
+  }
+
+  .normalize-text {
+    text-transform: lowercase;
   }
 }
 

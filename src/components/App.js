@@ -67,22 +67,26 @@ class App extends React.Component {
         {/* Header & Static Infomation */}
         <Header nameSubmit={() => this.changeScene(1)} />
         {/* Form For User Choices */}
-        {
-          this.state.sceneNumber === 1 
-          ? <Form checkResultCallback = {this.checkResult} />
-          : null
-        }
-        {
-          this.state.sceneNumber === 2
-          ? <GameResult 
-              pokemonName={this.state.resultInfo.pokemonName}
-              resultOfGame={this.state.resultInfo.resultOfGame}
-              crimeSolved={this.state.resultInfo.crimeSolved}
-              reasonForSuccess={this.state.resultInfo.reasonForSuccess}
-              playAgain = {this.resetTheGame} 
-            />
-          :null
-        }
+        <main>
+          <div className="wrapper">
+            {
+              this.state.sceneNumber === 1 
+              ? <Form checkResultCallback = {this.checkResult} />
+              : null
+            }
+            {
+              this.state.sceneNumber === 2
+              ? <GameResult 
+                  pokemonName={this.state.resultInfo.pokemonName}
+                  resultOfGame={this.state.resultInfo.resultOfGame}
+                  crimeSolved={this.state.resultInfo.crimeSolved}
+                  reasonForSuccess={this.state.resultInfo.reasonForSuccess}
+                  playAgain = {this.resetTheGame} 
+                />
+              :null
+            }
+          </div>
+        </main>
 
         {/* {
           this.state.sceneNumber >= 2
