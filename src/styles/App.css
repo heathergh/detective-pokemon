@@ -194,3 +194,9 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   clip: rect(0 0 0);
   overflow: hidden;
 }
+
+button {
+  background-color: #273878;
+  border: 2px solid #e5fecc;
+  color: #e5fecc;
+}

@@ -112,10 +112,11 @@ class Form extends Component {
             const randomIndex = this.getRandomIndex(response.data.length);
 
             if (response.data.length) {
+                const chosenCrime = response.data[randomIndex];
                 this.setState({
                     // TODO: Remove this if we don't reach stretch goal
-                    crime: response.data[randomIndex],
-                    errorMessage: ''
+                    crime: chosenCrime,
+                    errorMessage: '',
                 }, () => {
                     // placeholder for Pokemon function invocation
                     this.setState({
@@ -135,13 +136,6 @@ class Form extends Component {
         })
     }
 
-    getLocationName = (location) => {
-        for(let key in this.state.crimeLocations){
-            if(this.state.crimeLocations[key].poly === location){
-                return this.state.crimeLocations[key].name;
-            }
-        }
-    }
 
     render() {
         return (
@@ -149,8 +143,8 @@ class Form extends Component {
             {
                 this.state.showPokemon
                 ?   <> 
-                        <p>You're in {this.getLocationName(this.state.userCrimeLocation)} solving a case about {this.state.userCrimeCategory}.</p>
-                        <PokemonList checkResultCallback={this.props.checkResultCallback} crimeProp={this.state.crime} />
+                        <p>You're in {this.state.userNiceLocationName} solving a case about {this.state.userNiceCategoryName}.</p>
+                        <PokemonList checkResultCallback={this.props.checkResultCallback} crimeProp={this.state.crime} niceCrimeName={this.state.userNiceCategoryName} />
                     </>
                 :   <div>
                         <div>Form Page</div>

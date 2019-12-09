@@ -20,8 +20,8 @@ const GameResult = ({
               {pokemonName} solved the crime of {crimeSolved}!
             </p>
           : <p>
-            The criminal got away!
-          </p>
+              The criminal got away!
+            </p>
       }
       
       <p>{reasonForSuccess}</p>
