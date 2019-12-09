@@ -1,0 +1,27 @@
+@include mq-mobile {
+  
+  .headerForResult {
+    color: $primaryAccent;
+    margin: 0px;
+    text-transform: uppercase;
+    font-family: $icebergFontFamily;
+    font-size: 3rem;
+  }
+  .playAgain {
+    display:flex;
+    align-items: center;
+  }
+}
+
+@include mq-tablet {
+  .headerForResult {
+    font-size: 4rem;
+  }
+}
+
+@include mq-desktop {
+  
+  .headerForResult {
+    font-size: 5rem;
+  }
+}

@@ -479,3 +479,33 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     width: calc((100% - 40px) /5);
   }
 }
+
+@media (min-width: 320px) {
+  .headerForResult {
+    color: #d5c300;
+    margin: 0px;
+    text-transform: uppercase;
+    font-family: "Iceberg", cursive;
+    font-size: 3rem;
+  }
+  .playAgain {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .headerForResult {
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 1080px) {
+  .headerForResult {
+    font-size: 5rem;
+  }
+}
