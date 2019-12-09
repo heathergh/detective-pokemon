@@ -1,5 +1,26 @@
 @include mq-mobile {
+  .form-wrapper {
+    button {
+      width: 99%;
+    }
+    .select-wrapper {
+      border: 1px dotted $white;
+      margin: 20px 0;
+      label, p {
+        padding: 0 5px;
+      }
+      label {
+        text-decoration: underline;
+      }
+      select {
+        margin-top: 5px;
+        padding: 10px 0;
+        font-size: 1.5rem;
+        width: 100%;
+      }
 
+    }
+  }
 }
 
 @include mq-tablet {

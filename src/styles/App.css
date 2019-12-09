@@ -322,6 +322,28 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   }
 }
 
+@media (min-width: 320px) {
+  .form-wrapper button {
+    width: 99%;
+  }
+  .form-wrapper .select-wrapper {
+    border: 1px dotted #FFFFFF;
+    margin: 20px 0;
+  }
+  .form-wrapper .select-wrapper label, .form-wrapper .select-wrapper p {
+    padding: 0 5px;
+  }
+  .form-wrapper .select-wrapper label {
+    text-decoration: underline;
+  }
+  .form-wrapper .select-wrapper select {
+    margin-top: 5px;
+    padding: 10px 0;
+    font-size: 1.5rem;
+    width: 100%;
+  }
+}
+
 .pokemonFlex {
   display: -webkit-box;
   display: -ms-flexbox;
