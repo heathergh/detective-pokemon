@@ -41,8 +41,10 @@ class Form extends Component {
             url: `https://data.police.uk/api/${endPoint}`,
             method: 'get'
         }).then(response =>  {
+            const filteredCrimeCategories = response.data.filter(crime => crime.url !== 'all-crime' && crime.url !== 'other-crime' && crime.url !== 'other-theft');
+            
             this.setState({
-                crimeCategories: response.data
+                crimeCategories: filteredCrimeCategories
             })
         })
     }
