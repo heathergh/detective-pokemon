@@ -1,4 +1,4 @@
-@media mq-mobile {
+@include mq-mobile {
     .error {
         background: $errorMessageBackground;
         padding: 5px 10px;

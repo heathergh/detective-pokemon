@@ -1,15 +1,15 @@
-@media mq-mobile {
+@include mq-mobile {
 
 }
 
-@media mq-tablet {
+@include mq-tablet {
 
 }
 
-@media mq-desktop {
-  
+@include mq-desktop {
+
 }
 
-@media mq-retina {
-  
+@include mq-retina {
+
 }
