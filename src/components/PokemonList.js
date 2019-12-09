@@ -5,12 +5,14 @@ import pokemonImages from '../pokemonImageArray';
 import ErrorMessage from './ErrorMessage';
 import crimes from '../crimes.json';
 
+import pokeball from '../assets/pokeball.svg';
+
 class PokemonList extends React.Component {
   constructor() {
     super();
     this.state = {
       currentPokemon: [],
-      userSelection: 2,
+      userSelection: '',
       correctCrimeInfo: {},
       errorMessage: ''
     }
@@ -27,15 +29,12 @@ class PokemonList extends React.Component {
     }
 
     const pokemonTypePromises = [];
-
     const correctType = axios({
       method: 'GET',
       url: `https://pokeapi.co/api/v2/type/${correctTypeNumber}`,
       dataResponse: 'json',
     });
     pokemonTypePromises.push(correctType);
-
-
 
     for (let i = 0; i < 4; i++) {
       const otherChoice = axios({
@@ -47,13 +46,9 @@ class PokemonList extends React.Component {
     }
 
     axios.all(pokemonTypePromises).then((response) => {
-
       const specificPokemonPromises = [];
       response.forEach((data) => {
-
         let listOfPokemon = data.data.pokemon;
-
-
         listOfPokemon = listOfPokemon.filter((pokemon) => {
           const url = pokemon.pokemon.url;
           const index = url.slice(34);
@@ -63,13 +58,8 @@ class PokemonList extends React.Component {
 
           return true;
         })
-
         const choice = this.getRandomNumber(listOfPokemon.length - 1);
-
-
-
         const chosenPokemon = listOfPokemon[choice].pokemon;
-
         const specificCall = axios({
           method: 'GET',
           url: chosenPokemon.url,
@@ -77,6 +67,7 @@ class PokemonList extends React.Component {
         });
         specificPokemonPromises.push(specificCall);
       });
+
       axios.all(specificPokemonPromises).then((response) => {
         const newPokemonList = [];
         response.forEach((data) => {
@@ -88,23 +79,18 @@ class PokemonList extends React.Component {
           }
           newPokemonList.push(newPoke);
         });
-
-
         for (let i = 0; i < newPokemonList.length; i++) {
           const a = newPokemonList[i];
-
           const bIndex = Math.floor(Math.random() * newPokemonList.length);
-
           newPokemonList[i] = newPokemonList[bIndex];
           newPokemonList[bIndex] = a;
         }
-
         this.setState({
           currentPokemon: newPokemonList
         })
+        this.scrollToBottom();
       })
     });
-
   }
 
   getRandomNumber = (max) => {
@@ -132,43 +118,52 @@ class PokemonList extends React.Component {
     }
   }
 
+  /* Scroll code found at: */
+  /* https://stackoverflow.com/questions/37620694/how-to-scroll-to-bottom-in-react */
+  investigationButton = React.createRef();
+  scrollToBottom = () => {
+    this.investigationButton.scrollIntoView({ behavior: 'smooth' })
+  }
+
   render() {
     return (
       <div className="pokemonList">
         <form className="pokemonList" id="pokemonList">
-          <legend> Select the pokemon to help you with the case:</legend>
+          <legend> Select a pokemon to help you with this case:</legend>
           <div className="pokemonFlex">
-            {this.state.currentPokemon.map((poke, i) => {
-              return (
-                <div key={poke.id + i}>
-                  
-                  <input type="radio" name="pokemon" id={poke.id} value={i} checked={parseInt(this.state.userSelection) === i} onChange={this.handleOptionChange} />
-                  <label htmlFor={poke.id}>
-                    <img src={pokemonImages[poke.id - 1]} alt={`here is${poke.name}`} />
-                    <h2>{poke.name}</h2>
-                    <div className="pokemonTypes">
-                      {
-                        poke.types.map((type, i) => {
-                          return (
-                            
-                            <span key={type.type.name + i}>{i > 0 ? ' & ' : ''}{type.type.name}</span>
-                          )
-                        })
-                      }
+            {
+              this.state.currentPokemon.length > 0
+              ? this.state.currentPokemon.map((poke, i) => {
+                  return (
+                    <div key={i}>
+                      <input type="radio" name="pokemon" id={poke.id} value={i} checked={parseInt(this.state.userSelection) === i} onChange={this.handleOptionChange} />
+                      <label htmlFor={poke.id}>
+                        <img src={pokemonImages[poke.id - 1]} alt={`here is${poke.name}`} />
+                        <h2>{poke.name}</h2>
+                        <div className="pokemonTypes">
+                          {
+                            poke.types.map((type, i) => {
+                              return (
+                                <div key={type.type.name}><span className={`pokemonTypeSpan ${type.type.name}`}>{type.type.name}</span></div>
+                              )
+                            })
+                          }
+                        </div>
+                      </label>
                     </div>
-                  </label>
-  
+                  )
+                })
+              : <div className="pokeballLoader">
+                  <div className="pokeball">
+                  	<img src={pokeball} alt="Loading the pokemon api!" />
+                  </div>
                 </div>
-              )
-            })}
+            }
           </div>
-          <button id="submit" onClick={this.returnedSelection}>Start investigation!</button>
+          <button id="submit" onClick={this.returnedSelection} ref={(element) => { this.investigationButton = element; }}>Start investigation!</button>
           {this.state.errorMessage !== '' ? <ErrorMessage id={'error-description'}>{this.state.errorMessage}</ErrorMessage> : null}
         </form>
       </div>
-
-
-
     );
   }
 };
