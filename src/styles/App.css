@@ -219,6 +219,18 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     font-size: 1.95rem;
     font-family: "Barlow", sans-serif;
   }
+  button, input, input::-webkit-input-placeholder {
+    font-size: 1.95rem;
+  }
+  button, input, input:-ms-input-placeholder {
+    font-size: 1.95rem;
+  }
+  button, input, input::-ms-input-placeholder {
+    font-size: 1.95rem;
+  }
+  button, input, input::placeholder {
+    font-size: 1.95rem;
+  }
   .normalize-text {
     text-transform: lowercase;
   }
@@ -246,16 +258,15 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     border-radius: 5px;
   }
   .error p {
+    color: #9f3a38;
     text-align: center;
     min-width: 200px;
-    max-width: 300px;
+    max-width: 400px;
   }
 }
 
 @media (min-width: 320px) {
   h1 {
-    -webkit-animation: flicker 3s infinite alternate;
-            animation: flicker 3s infinite alternate;
     border: 0.4rem solid #fff;
     border-radius: 3rem;
     color: #e5fecc;
