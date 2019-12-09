@@ -8,6 +8,8 @@
 
   .wrapper {
     width: 90%;
+    margin: 0 auto;
+    max-width: 1080px;
   }
   
   body {
@@ -58,13 +60,15 @@
 
 @include mq-tablet {
   .wrapper {
-  max-width: 1080px;
   width: 80%;
-  margin: 0 auto;
+  
 }
    button {
     font-size: 2.5rem;
     padding: 1rem 2.5rem;
+}
+p, label {
+  font-size: 2.3rem;
 }
 }
 
