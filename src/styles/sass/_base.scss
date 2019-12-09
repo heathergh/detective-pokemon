@@ -39,6 +39,10 @@ body {
     font-family: $barlowFontFamily;
   }
 
+  button, input,  input::placeholder {
+    font-size: 1.95rem;
+  }
+
   .normalize-text {
     text-transform: lowercase;
   }

@@ -215,6 +215,18 @@ body {
     font-size: 1.95rem;
     font-family: "Barlow", sans-serif;
   }
+  button, input, input::-webkit-input-placeholder {
+    font-size: 1.95rem;
+  }
+  button, input, input:-ms-input-placeholder {
+    font-size: 1.95rem;
+  }
+  button, input, input::-ms-input-placeholder {
+    font-size: 1.95rem;
+  }
+  button, input, input::placeholder {
+    font-size: 1.95rem;
+  }
   .normalize-text {
     text-transform: lowercase;
   }
