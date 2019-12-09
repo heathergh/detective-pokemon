@@ -149,6 +149,7 @@ class Form extends Component {
                 :   <div className="form-wrapper">
                         <form>
                             <div className="selects-wrapper">
+                                <p className="instructions">Choose a location to investigate a crime</p>
                                 <div className="select-wrapper">
                                     <Select
                                         changeHandler={e => {
@@ -163,7 +164,8 @@ class Form extends Component {
                                         isValid={this.state.locationValid}
                                     />
                                 </div>
-
+                                        
+                                <p className="instructions">Choose a type of crime to investigate</p>
                                 <div className="select-wrapper">
                                     <Select
                                         changeHandler={e => {

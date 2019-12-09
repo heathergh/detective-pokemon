@@ -3,22 +3,37 @@
     button {
       width: 99%;
     }
-    .select-wrapper {
-      border: 1px dotted $white;
-      margin: 20px 0;
-      label, p {
-        padding: 0 5px;
+    .selects-wrapper {
+      p, label {
+        font-size: 2rem;
       }
+      .instructions {
+        color: $primaryColor;
+        padding: 10px 5px;
+        border-radius: 5px;
+        background: $primaryAccent;
+      }
+    }
+    .select-wrapper {
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px;
+      margin: 20px 0;
       label {
-        text-decoration: underline;
+        color: $white;
+        margin-left: 5px;
+        margin-right: 5px;
+        border-bottom: 1px solid $white;
+        padding-bottom: 5px;
+        text-align: center;
       }
       select {
-        margin-top: 5px;
+        margin-top: 10px;
         padding: 10px 0;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
+        text-align: center;
         width: 100%;
       }
-
     }
   }
 }

@@ -48,7 +48,7 @@ class Header extends Component {
               </form>
             </div>
             :
-            <h2>Welcome {this.state.userName}!</h2>
+            <h2>Welcome, {this.state.userName}!</h2>
         }
 
       </header>

@@ -183,7 +183,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 @media (min-width: 320px) {
   html {
     font-size: 62.5%;
-    color: white;
+    color: #FFFFFF;
   }
   .wrapper {
     width: 90%;
@@ -216,20 +216,20 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     font-family: "Iceberg", cursive;
   }
   p, label {
-    font-size: 1.95rem;
+    font-size: 2rem;
     font-family: "Barlow", sans-serif;
   }
   button, input, input::-webkit-input-placeholder {
-    font-size: 1.95rem;
+    font-size: 2rem;
   }
   button, input, input:-ms-input-placeholder {
-    font-size: 1.95rem;
+    font-size: 2rem;
   }
   button, input, input::-ms-input-placeholder {
-    font-size: 1.95rem;
+    font-size: 2rem;
   }
   button, input, input::placeholder {
-    font-size: 1.95rem;
+    font-size: 2rem;
   }
   .normalize-text {
     text-transform: lowercase;
@@ -326,20 +326,39 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   .form-wrapper button {
     width: 99%;
   }
+  .form-wrapper .selects-wrapper p, .form-wrapper .selects-wrapper label {
+    font-size: 2rem;
+  }
+  .form-wrapper .selects-wrapper .instructions {
+    color: #273878;
+    padding: 10px 5px;
+    border-radius: 5px;
+    background: #d5c300;
+  }
   .form-wrapper .select-wrapper {
-    border: 1px dotted #FFFFFF;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    border-radius: 10px;
     margin: 20px 0;
   }
-  .form-wrapper .select-wrapper label, .form-wrapper .select-wrapper p {
-    padding: 0 5px;
-  }
   .form-wrapper .select-wrapper label {
-    text-decoration: underline;
+    color: #FFFFFF;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-bottom: 1px solid #FFFFFF;
+    padding-bottom: 5px;
+    text-align: center;
   }
   .form-wrapper .select-wrapper select {
-    margin-top: 5px;
+    margin-top: 10px;
     padding: 10px 0;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    text-align: center;
     width: 100%;
   }
 }

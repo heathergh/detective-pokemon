@@ -1,25 +1,22 @@
 @import 'fonts';
 
-
-
 @include mq-mobile {
   html {
     font-size: $baseFontSize;
-    color: white;
+    color: $white;
   }
 
   .wrapper {
     width: 90%;
   }
   
-
   body {
-  background-image:linear-gradient(to top right, transparentize($primaryColor, 0.2), transparentize(black, 0.2)), url('../assets/background.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  min-height:100vh;
-}
+    background-image:linear-gradient(to top right, transparentize($primaryColor, 0.2), transparentize(black, 0.2)), url('../assets/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    min-height:100vh;
+  }
 
   button {
     background-color: $primaryAccent;
@@ -46,12 +43,12 @@
   }
 
   p, label {
-    font-size: 1.95rem;
+    font-size: 2rem;
     font-family: $barlowFontFamily;
   }
 
   button, input,  input::placeholder {
-    font-size: 1.95rem;
+    font-size: 2rem;
   }
 
   .normalize-text {
