@@ -155,7 +155,7 @@ class PokemonList extends React.Component {
                 })
               : <div className="pokeballLoader">
                   <div className="pokeball">
-                  	<img src={pokeball} />
+                  	<img src={pokeball} alt="Loading the pokemon api!" />
                   </div>
                 </div>
             }
