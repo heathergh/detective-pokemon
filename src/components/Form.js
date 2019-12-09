@@ -113,13 +113,6 @@ class Form extends Component {
 
             if (response.data.length) {
                 const chosenCrime = response.data[randomIndex];
-                // let niceCatName = '';
-                // for(let key in this.state.crimeCategories){
-                //     if(this.state.crimeCategories[key].url === chosenCrime.category){
-                //         niceCatName = this.state.crimeCategories[key].name;
-                //     }
-                // }
-                // chosenCrime.nice_category_name = niceCatName;
                 this.setState({
                     // TODO: Remove this if we don't reach stretch goal
                     crime: chosenCrime,
