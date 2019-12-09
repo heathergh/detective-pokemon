@@ -274,7 +274,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     font-size: 3.5rem;
     padding: 2rem 1rem;
     letter-spacing: 0.8rem;
-    margin: 3rem 0;
+    margin: 0;
     text-transform: uppercase;
     text-align: center;
   }
@@ -326,29 +326,43 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .pokemonFlex > div {
-  width: calc(100%/5 - 20px);
-  margin: 10px;
+  width: calc(100%/3 - 10px);
+  margin-right: 10px;
   text-align: center;
-  color: #273878;
-}
-
-.pokemonFlex > div:first-of-type {
-  margin-left: 20px;
 }
 
 .pokemonFlex > div:last-of-type {
-  margin-right: 20px;
+  margin: 0;
 }
 
 .pokemonFlex > div input {
   opacity: 0;
   position: absolute;
+}
+
+.pokemonFlex > div img {
+  max-width: 100%;
+  max-height: 150px;
+  display: block;
+}
+
+.pokemonFlex > div p {
+  margin: 0;
 }
 
 .pokemonFlex > div label {
@@ -365,29 +379,44 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  cursor: pointer;
-  min-height: 400px;
   padding: 50px 0;
-  background-color: rgba(213, 195, 0, 0.2);
+  min-height: 400px;
+  position: relative;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  z-index: 1;
+  color: #e5fecc;
+  background-color: #273878;
+  border-radius: 30px;
+  cursor: pointer;
   overflow: hidden;
+  -webkit-transition: all 0.3s cubic-bezier(0.47, 0, 0.745, 0.715);
+  transition: all 0.3s cubic-bezier(0.47, 0, 0.745, 0.715);
 }
 
 .pokemonFlex > div input:checked + label {
-  background-color: #d5c300;
-  color: #e5fecc;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  z-index: 2;
+  color: #273878;
+  background-color: #e5fecc;
   overflow: visible;
+  -webkit-transition: all 0.25s cubic-bezier(0.39, 0.575, 0.565, 1);
+  transition: all 0.25s cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 
 .pokemonFlex > div input:focus + label {
-  border: #273878 1px solid;
+  border: #d5c300 2px solid;
 }
 
-.pokemonFlex > div img {
-  max-width: 100%;
-  max-height: 150px;
-  display: block;
-}
-
-.pokemonFlex > div p {
-  margin: 0;
+@media (min-width: 768px) {
+  .pokemonFlex {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .pokemonFlex > div {
+    width: calc((100% - 40px) /5);
+  }
 }
