@@ -40,8 +40,8 @@ class Header extends Component {
         {
           !this.state.nameChoosen ?
             <div>
-              <p>It is dark times out there. In this new world, Pokemon come to rescue and support the UK law enforcement. As a detective you will help support the UK police officers with your Pokemon partner! </p>
-              <p>Pick a location and a crime, and then decide which Pokemon partner you'll bring with you to the solve the crime.</p>
+              <p>It is dark times out there. In this new world, Pokemon come to the rescue and support the UK law enforcement. As a detective you will help support the UK police officers with your Pokemon partner! </p>
+              <p>Pick a location and a crime, and then decide which Pokemon partner you'll bring with you to solve the crime.</p>
               <p>Each type of crime requires a different type of Pokemon. What crime will you help solve today?</p>
 
               <form onSubmit={this.handleNameSubmit}>
