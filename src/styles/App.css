@@ -525,7 +525,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   .form-wrapper .select-wrapper select {
     margin-top: 25px;
     height: 44px;
-    line-height: 1;
+    line-height: 44px;
   }
   .form-wrapper .select-wrapper:first-of-type {
     margin-right: 60px;

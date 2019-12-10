@@ -63,7 +63,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="wrapper">
+      <div>
         {/* Header & Static Infomation */}
         <Header nameSubmit={() => this.changeScene(1)} />
         {/* Form For User Choices */}
