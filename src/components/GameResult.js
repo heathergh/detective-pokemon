@@ -17,7 +17,7 @@ const GameResult = ({
         {
           resultOfGame
             ? <p>
-              {pokemonName} solved the crime of {crimeSolved}!
+              {pokemonName} solved the case of <span className="normalize-text">{crimeSolved}</span>!
             </p>
             : <p>
               The criminal got away!

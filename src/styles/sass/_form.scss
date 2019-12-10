@@ -1,5 +1,11 @@
 @include mq-mobile {
-
+  .crime-reminder {
+    margin: 0;
+    padding: 5px;
+  }
+  .crime-reminder-accent {
+    color: $primaryAccent;
+  }
 }
 
 @include mq-tablet {
