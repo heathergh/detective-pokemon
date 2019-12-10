@@ -134,7 +134,7 @@ class PokemonList extends React.Component {
     } else {
       //Otherwise display an error message
       this.setState({
-        errorMessage: "Please select a pokemon!"
+        errorMessage: "Error: Please select a pokemon!"
       })
     }
   }

@@ -232,6 +232,12 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   .normalize-text {
     text-transform: lowercase;
   }
+  input, button {
+    width: 50%;
+  }
+  button.submitButton {
+    width: 100%;
+  }
   .wrapper {
     width: 90%;
     margin: 0 auto;
@@ -239,13 +245,21 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   }
 }
 
+@media (min-width: 320px) and (max-width: 550px) {
+  input, button {
+    width: 100%;
+  }
+}
+
 @media (min-width: 768px) {
   body {
     padding: 4rem 0 0 0;
   }
-  button {
+  button,
+  button.submitButton {
     font-size: 2.5rem;
-    padding: 1rem 2.5rem;
+    padding: 1rem 7.7rem;
+    width: auto;
   }
   p, label {
     font-size: 2.3rem;
@@ -275,14 +289,12 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 
 @media (min-width: 768px) {
   .error {
-    padding: 10px 15px;
     max-width: 400px;
   }
 }
 
 @media (min-width: 1080px) {
   .error {
-    padding: 20px 30px;
     max-width: 500px;
   }
 }
@@ -366,25 +378,12 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
         -ms-flex-align: center;
             align-items: center;
   }
-  header form input,
-  header form button {
-    width: 50%;
-  }
   header form input {
     padding: 0.8rem;
     margin: 1rem 0px;
   }
   header form input:focus {
     background-color: #e5fecc;
-  }
-}
-
-@media (min-width: 320px) and (max-width: 550px) {
-  header form input {
-    width: 100%;
-  }
-  header form button {
-    width: 100%;
   }
 }
 
@@ -402,15 +401,11 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   h2 {
     font-size: 3rem;
   }
-  header form input,
-  header form button {
+  header form input {
     width: auto;
   }
   header form input {
     padding: 1rem 2rem;
-  }
-  header form button {
-    padding: 1rem 7.7rem;
   }
 }
 
@@ -433,16 +428,8 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
             justify-content: center;
     text-align: center;
   }
-  .form-wrapper button, .form-wrapper label, .form-wrapper select {
+  .form-wrapper label, .form-wrapper select {
     width: 100%;
-    max-width: 350px;
-  }
-  .form-wrapper button {
-    padding: 0;
-    height: 40px;
-  }
-  .form-wrapper .selects-wrapper {
-    max-width: 350px;
   }
   .form-wrapper .selects-wrapper p, .form-wrapper .selects-wrapper label {
     font-size: 2rem;
@@ -467,7 +454,6 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     margin: 40px 0  30px 0;
   }
   .form-wrapper .select-wrapper label {
-    max-width: 350px;
     color: #fff;
   }
   .form-wrapper .select-wrapper select {
@@ -490,9 +476,6 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 @media (min-width: 768px) {
   .form-wrapper {
     display: block;
-  }
-  .form-wrapper button {
-    max-width: 400px;
   }
   .form-wrapper label, .form-wrapper select {
     max-width: none;
@@ -536,11 +519,8 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 @media (min-width: 1080px) {
-  .form-wrapper button, .form-wrapper label, .form-wrapper select {
+  .form-wrapper label, .form-wrapper select {
     max-width: 500px;
-  }
-  .form-wrapper button {
-    height: 80px;
   }
   .form-wrapper .selects-wrapper {
     margin: 60px 0;
@@ -824,6 +804,9 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 

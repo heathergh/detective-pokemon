@@ -3,16 +3,10 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    button, label, select {
+    label, select {
       width: 100%;
-      max-width: 350px;
-    }
-    button {
-      padding: 0;
-      height: 40px;
     }
     .selects-wrapper {
-      max-width: 350px;
       p, label {
         font-size: 2rem;
       }
@@ -31,7 +25,6 @@
         margin: 40px 0  30px 0;
       }
       label {
-        max-width: 350px;
         color: $primaryWhite;
       }
       select {
@@ -56,9 +49,6 @@
 @include mq-tablet {
   .form-wrapper {
     display: block;
-    button {
-      max-width: 400px;
-    }
     label, select {
       max-width: none;
     }
@@ -93,11 +83,8 @@
 
 @include mq-desktop {
   .form-wrapper {
-    button, label, select {
+    label, select {
       max-width: 500px;
-    }
-    button {
-      height: 80px;
     }
     .selects-wrapper {
       margin: 60px 0;
