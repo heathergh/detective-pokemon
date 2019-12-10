@@ -29,13 +29,16 @@
   h1::-moz-selection {
     background-color: black;
     color: #e5fecc;
+    
   }
   h1::selection {
     background-color: #08f;
     color: #e5fecc;
+    
   }
   h1:focus {
     outline: none;
+    border: 2px solid red;
   }
   @keyframes flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
