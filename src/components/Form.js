@@ -150,7 +150,7 @@ class Form extends Component {
                         <form>
                             <div className="selects-wrapper">
                                 <div className="select-wrapper">
-                                    <p className="instructions">Choose a crime location</p>
+                                    {/* <p className="instructions">Choose a crime location</p> */}
                                     <Select
                                         changeHandler={e => {
                                             this.getUserInput(e, 'userCrimeLocation', 'userNiceLocationName')
@@ -166,7 +166,7 @@ class Form extends Component {
                                 </div>
                                         
                                 <div className="select-wrapper">
-                                    <p className="instructions">Choose a type of crime</p>
+                                    {/* <p className="">Choose a type of crime</p> */}
                                     <Select
                                         changeHandler={e => {
                                             this.getUserInput(e, 'userCrimeCategory', 'userNiceCategoryName')
@@ -183,7 +183,7 @@ class Form extends Component {
                                 </div>
                             </div>
 
-                            { this.state.errorMessage !== '' ? <ErrorMessage id={'error-description'}>{this.state.errorMessage}</ErrorMessage> : null }
+                            { this.state.errorMessage !== '' ? <ErrorMessage formErrorId={'error-description'}>{this.state.errorMessage}</ErrorMessage> : null }
 
                             <Button onClick={e => { this.clickHandler(e, this.state.userCrimeCategory, this.state.userCrimeLocation)}}>
                                 Get Pokemon Helpers
