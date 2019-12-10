@@ -523,22 +523,6 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     }
   }
   .pokemon-flex {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    width: 100%;
     padding: 25px 0;
   }
   .pokemon-flex h2 {
@@ -561,12 +545,15 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    position: relative;
     -ms-flex-pack: distribute;
         justify-content: space-around;
     width: 100%;
     overflow: hidden;
   }
   .pokemon-flex .pokeball-loader .pokeball {
+    position: relative;
+    left: 0;
     -webkit-animation: pokeball-spin 1s infinite linear alternate;
             animation: pokeball-spin 1s infinite linear alternate;
   }
@@ -616,12 +603,26 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     margin: 10px;
     text-align: center;
   }
-  .pokemon-flex > div:last-of-type {
-    margin: 0;
-  }
 }
 
 @media (min-width: 500px) {
+  .pokemon-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
   .pokemon-flex > div {
     width: calc(50% - 20px);
     margin: 10px;
@@ -631,15 +632,10 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 
 @media (min-width: 768px) {
   .pokemon-flex {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
     width: 90%;
   }
   .pokemon-flex > div {
-    width: calc(100%/3 - 10px);
-    margin: 10px 10px 10px 0;
+    width: calc(100%/3 - 20px);
   }
 }
 
@@ -652,7 +648,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     width: 100%;
   }
   .pokemon-flex > div {
-    width: calc((100% - 40px) / 5);
+    width: calc((100%) / 5 - 20px);
   }
 }
 

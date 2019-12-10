@@ -96,14 +96,6 @@
     }
   }
   .pokemon-flex {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-
-    width:100%;
-
     padding: 25px 0;
     h2 {
       font-size: 2.5rem;
@@ -125,10 +117,13 @@
     }
     .pokeball-loader {
       display: flex;
+      position: relative;
       justify-content: space-around;
       width: 100%;
       overflow: hidden;
       .pokeball {
+        position: relative;
+        left: 0;
         animation: pokeball-spin 1s infinite linear alternate;
       }
     }
@@ -174,16 +169,17 @@
       width: 100%;
       margin:10px;
       text-align: center;
-      
-      &:last-of-type {
-        margin: 0;
-      }
     }
   }
 }
 
-@media (min-width: 500px){
+@include mq-between-mobile-tablet{
   .pokemon-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     &>div {
       width: calc(50% - 20px);
       margin:10px;
@@ -194,11 +190,9 @@
 
 @include mq-tablet {
   .pokemon-flex {
-    flex-direction: row;
     width:90%;
     &>div {
-      width: calc(100%/3 - 10px);
-      margin:10px 10px 10px 0;
+      width: calc(100%/3 - 20px);
     }
   }
 }
@@ -207,7 +201,7 @@
     flex-direction: row;
     width: 100%;
     &>div {
-      width: calc((100% - 40px) / 5);
+      width: calc((100%) / 5 - 20px);
     }
   }
 }
