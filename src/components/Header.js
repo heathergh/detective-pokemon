@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ErrorMessage from './ErrorMessage';
 
 
 class Header extends Component {
@@ -6,7 +7,8 @@ class Header extends Component {
     super();
     this.state = {
       userName: '',
-      nameChoosen: false
+      nameChoosen: false,
+      errorMessage: ''
     }
   }
 
@@ -24,7 +26,9 @@ class Header extends Component {
       });
       this.props.nameSubmit();
     } else {
-      alert("Please enter a name!");
+      this.setState({
+        errorMessage: 'Error: please enter your name.',
+      })
     }
   }
 
@@ -47,6 +51,7 @@ class Header extends Component {
                 <input id="userName" type="text" name="userName" value={this.state.userName} onChange={this.handleInputChange} />
 
                 <button>Submit</button>
+                {this.state.errorMessage !== '' ? <ErrorMessage id={'error-description'}>{this.state.errorMessage}</ErrorMessage> : null}
               </form>
             </div>
             :

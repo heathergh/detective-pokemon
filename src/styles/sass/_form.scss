@@ -23,6 +23,7 @@
         background: $primaryAccent;
       }
     }
+
     .select-wrapper {
       display: flex;
       flex-direction: column;
@@ -42,6 +43,14 @@
         font-size: 1.8rem;
         text-align: center;
       }
+    }
+
+    .crime-reminder {
+      margin: 0;
+      padding: 5px;
+    }
+    .crime-reminder-accent {
+      color: $primaryAccent;
     }
   }
 }
@@ -109,8 +118,5 @@
 @include mq-retina {
   .selects-wrapper {
     margin: 100px 0;
-  }
-  .select-wrapper {
-
   }
 }

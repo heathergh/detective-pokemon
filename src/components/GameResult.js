@@ -8,7 +8,7 @@ const GameResult = ({
   playAgain
 }) => (
     <div>
-      <h2 className="headerForResult">
+      <h2 className="header-for-result">
         {resultOfGame
           ? 'Great job, you solved the crime'
           : 'Better luck next time'}
@@ -17,7 +17,7 @@ const GameResult = ({
         {
           resultOfGame
             ? <p>
-              {pokemonName} solved the crime of {crimeSolved}!
+              {pokemonName} solved the case of <span className="normalize-text">{crimeSolved}</span>!
             </p>
             : <p>
               The criminal got away!
@@ -26,7 +26,7 @@ const GameResult = ({
 
         <p>{reasonForSuccess}</p>
       </div>
-      <button className="playAgain" onClick={playAgain}>Solve another crime</button>
+      <button className="play-again" onClick={playAgain}>Solve another crime</button>
     </div>
   );
 

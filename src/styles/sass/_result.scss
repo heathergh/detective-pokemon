@@ -1,13 +1,13 @@
 @include mq-mobile {
   
-  .headerForResult {
+  .header-for-result {
     color: $primaryAccent;
     margin-top: 3rem;
     text-transform: uppercase;
     font-family: $icebergFontFamily;
     font-size: 3rem;
   }
-  .playAgain {
+  .play-again {
     display:flex;
     align-items: center;
   }
@@ -21,7 +21,7 @@
 
 @include mq-desktop {
   
-  .headerForResult {
+  .header-for-result {
     font-size: 5rem;
   }
 }

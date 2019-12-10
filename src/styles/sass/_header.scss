@@ -1,14 +1,16 @@
 @include mq-mobile {
-  body {
-    padding: 25px 0 0 0;
+  header .error {
+    position: absolute;
+    z-index: 2;
+    bottom: 175px;
   }
-   
+
   header div {
     padding-top:15px;
   }
   
   h1 {
-  // animation: flicker 3s infinite alternate;
+    // animation: flicker 3s infinite alternate;
     border: 0.4rem solid #fff;
     border-radius: 3rem;
     color: #e5fecc;
@@ -71,6 +73,7 @@
   }
 
   .header-form {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -101,14 +104,9 @@
 }
 
 @include mq-tablet {
-  body {
-    padding: 4rem 0px;
-  }
-    
   header div {
     padding-top:4rem;
   }
-  
 
   h1 {
     font-size: 8rem;
@@ -119,27 +117,30 @@
     font-size: 3rem;
   }
 
-  .header-form input{
-    width: auto;
-    padding: 1rem 2rem;
-  }
+  .header-form input {
+    input,
+    button {
+      width: auto;
+    }
 
-  .header-form button {
-    padding: 1rem 7.7rem;
-    width: auto;
+    input {
+      padding: 1rem 2rem;
+    }
+
+    .header-form {
+      button {
+        padding: 1rem 7.7rem;
+      }
+    }
   }
 }
 
 @include mq-desktop {
-  .header-form {
+  header form {
     padding-top: 1rem;
   }
 
   h2 {
     font-size: 4rem;
   }
-}
-
-@include mq-retina {
-
 }
