@@ -781,13 +781,13 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     width: 100%;
   }
   .pokemon-flex > div {
-    width: calc(100%/3 - 20px);
+    width: calc((100% / 3) - 20px);
   }
 }
 
 @media (min-width: 1080px) {
   .pokemon-flex > div {
-    width: calc(100%/ 5 - 10px);
+    width: calc((100% / 5) - 10px);
     margin: 5px;
   }
 }
