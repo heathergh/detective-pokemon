@@ -2,9 +2,14 @@
   body {
     padding: 25px 0px;
   }
-   
+  
+  header .error {
+    position: absolute;
+    z-index: 2;
+    bottom: 175px;
+  }
   header div {
-    padding-top:15px;
+    padding-top: 15px;
     }
   
   h1 {
@@ -65,7 +70,9 @@
     text-align: center;
 }
 
-  form {
+  header form {
+
+    position:relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -90,7 +97,7 @@
   button {
     width:100%;   
   }
-}
+  }
 }
 
 }
@@ -101,43 +108,41 @@
   }
     
   header div {
-      padding-top:4rem;
+    padding-top:4rem;
     }
-  
 
   h1 {
-
-      font-size: 8rem;
-      padding: 2rem 4rem 2.7rem;
+    font-size: 8rem;
+    padding: 2rem 4rem 2.7rem;
   }
 
   h2 {
     font-size: 3rem;
 }
-  form input{
+  header form {
+    input,
+    button {
     width: auto;
+  }
+
+    input {
     padding: 1rem 2rem;
   }
 
-  form button {
+    button {
     padding: 1rem 7.7rem;
-    width: auto;
   }
+}
 
 }
 
 @include mq-desktop {
-  form {
+  header form {
     padding-top: 1rem;
   }
 
   h2 {
   font-size: 4rem;
-  
-}
-
-}
-
-@include mq-retina {
+  }
 
 }
