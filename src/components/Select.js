@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 // get object from parent
 // get out two dynamic properties: paramName, clientSideName)
-const Select = ({arrayProp, optionValue, optionName, labelFor, label, selectName, changeHandler, isValid}) => {
+const Select = forwardRef(({arrayProp, optionValue, optionName, labelFor, label, selectName, changeHandler, isValid}, ref) => {
     const elements = arrayProp.map((element, index) => {
         return (
             <option key={index} value={element[optionValue]}>{element[optionName]}</option>
@@ -24,7 +24,7 @@ const Select = ({arrayProp, optionValue, optionName, labelFor, label, selectName
 
     return (
         <>
-            <label htmlFor={labelFor}>{label}</label>
+            <label htmlFor={labelFor} className="instructions">{label}</label>
 
             <select 
                 name={selectName}
@@ -42,5 +42,6 @@ const Select = ({arrayProp, optionValue, optionName, labelFor, label, selectName
 
         </>
     )
-}
+});
+
 export default Select;

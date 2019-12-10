@@ -1,4 +1,5 @@
 import React from 'react';
+
 const ErrorMessage = props => {
     return (
         <div role="alert" className="error" id={props.form_error_message}>
@@ -6,4 +7,5 @@ const ErrorMessage = props => {
         </div>
     )
 }
+
 export default ErrorMessage;

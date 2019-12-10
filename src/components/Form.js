@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import axios from 'axios';
 import locations from '../crimeHotSpots.json';
 import Select from './Select';
@@ -9,6 +9,7 @@ import PokemonList from './PokemonList';
 class Form extends Component {
     constructor() {
         super();
+        this.select = createRef();
         this.state = {
             crimeLocations: locations,
             crimeCategories: [],
@@ -79,12 +80,18 @@ class Form extends Component {
             this.setState({
                 locationValid: true,
                 errorMessage: "Error: Please select a category"
+            }, () => {
+                console.log("error1");
+                this.select.current.focus();
             })
         } else if (this.state.userCrimeCategory && !this.state.userCrimeLocation) {
             // if category is selected, display error message for location select, and change categoryValid to true
             this.setState({
                 categoryValid: true,
                 errorMessage: "Error: Please select a location"
+            }, () => {
+                console.log("error2");
+                this.select.current.focus();
             })
         } else {
             // if the form is valid, set locationValid and categoryValid to valid, clear error message, and invoke api call as a callback after setting state
@@ -129,6 +136,8 @@ class Form extends Component {
                     // TODO: Remove if we do not reach this stretch goal
                     // adding errorMessageCount for stretch goal to display message to user if error message shows up three times
                     // errorMessageCount: this.state.errorMessageCount + 1
+                }, () => {
+                    this.select.current.focus();
                 })
             }
         }).catch(error => {
@@ -148,36 +157,44 @@ class Form extends Component {
                     </>
                 :   <div className="form-wrapper">
                         <form>
-                            <div className="select-wrapper">
-                                <Select
-                                    changeHandler={e => {
-                                        this.getUserInput(e, 'userCrimeLocation', 'userNiceLocationName')
-                                    }}
-                                    label={'Crime Locations'}
-                                    labelFor={'crime-location'}
-                                    arrayProp={this.state.crimeLocations}
-                                    optionValue={'poly'}
-                                    optionName={'name'}
-                                    selectName={'crime-locations'}
-                                    isValid={this.state.locationValid}
-                                />
+                            <div className="selects-wrapper">
+                                <div className="select-wrapper">
+                                    <p className="instructions">Choose a crime location</p>
+                                    <Select
+                                        changeHandler={e => {
+                                            this.getUserInput(e, 'userCrimeLocation', 'userNiceLocationName')
+                                        }}
+                                        label={'Crime Locations'}
+                                        labelFor={'crime-location'}
+                                        arrayProp={this.state.crimeLocations}
+                                        optionValue={'poly'}
+                                        optionName={'name'}
+                                        selectName={'crime-locations'}
+                                        isValid={this.state.locationValid}
+                                        ref={ this.state.errorMessage !== '' ? elem => this.select = elem : null }
+                                    />
+                                </div>
+                                        
+                                <div className="select-wrapper">
+                                    <p className="instructions">Choose a type of crime</p>
+                                    <Select
+                                        changeHandler={e => {
+                                            this.getUserInput(e, 'userCrimeCategory', 'userNiceCategoryName')
+                                        }}
+                                        onChange={this.getUserInput}
+                                        label={'Crime Categories'}
+                                        labelFor={'crime-category'}
+                                        arrayProp={this.state.crimeCategories}
+                                        optionValue={'url'}
+                                        optionName={'name'}
+                                        selectName={'crime-categories'}
+                                        isValid={this.state.categoryValid}
+                                        ref={ this.state.errorMessage !== '' ? elem => this.select = elem : null }
+                                    />
+                                </div>
                             </div>
 
-                            <div className="select-wrapper">
-                                <Select
-                                    changeHandler={e => {
-                                        this.getUserInput(e, 'userCrimeCategory', 'userNiceCategoryName')
-                                    }}
-                                    onChange={this.getUserInput}
-                                    label={'Crime Categories'}
-                                    labelFor={'crime-category'}
-                                    arrayProp={this.state.crimeCategories}
-                                    optionValue={'url'}
-                                    optionName={'name'}
-                                    selectName={'crime-categories'}
-                                    isValid={this.state.categoryValid}
-                                />
-                            </div>
+                            { this.state.errorMessage !== '' ? <ErrorMessage formErrorId={'error-description'}>{this.state.errorMessage}</ErrorMessage> : null }
 
                             <Button onClick={e => { this.clickHandler(e, this.state.userCrimeCategory, this.state.userCrimeLocation)}}>
                                 Get Pokemon Helpers
