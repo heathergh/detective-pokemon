@@ -30,7 +30,7 @@ class Header extends Component {
 
   render() {
     return (
-      <header className="wrapper">
+      <header>
         <h1>Detective Pokemon</h1>
 
 

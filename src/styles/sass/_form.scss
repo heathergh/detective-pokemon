@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    button, input, label, select, p {
+    button, label, select {
       width: 100%;
       max-width: 350px;
     }
@@ -35,12 +35,12 @@
         color: $primaryWhite;
       }
       select {
+        border-width: thin;
+        border-radius: 5px;
         margin-top: 10px;
         padding: 10px 0;
         font-size: 1.8rem;
         text-align: center;
-        border-width: thin;
-        border-radius: 5px;
       }
     }
   }
@@ -49,24 +49,35 @@
 @include mq-tablet {
   .form-wrapper {
     display: block;
+    button {
+      max-width: 400px;
+    }
+    label, select {
+      max-width: none;
+    }
     .selects-wrapper {
       display: flex;
       align-self: normal;
       justify-content: space-between;
       max-width: none;
-      .select-wrapper {
-        display: flex;
-        flex-direction: column;
-        width: calc(50% - 20px);
-        label {
-          width: 100%;
-        }
-        &:first-of-type {
-          margin-right: 20px;
-        }
-        &:nth-of-type(2) {
-          margin: 20px 0 0 0;
-        }
+    }
+    .select-wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      label {
+        max-width: none;
+        width: 100%;
+      }
+      select {
+        margin-top: 25px;
+        height: 44px;
+      }
+      &:first-of-type {
+        margin-right: 60px;
+      }
+      &:nth-of-type(2) {
+        margin: 20px 0 0 0;
       }
     }
   }
@@ -74,23 +85,32 @@
 
 @include mq-desktop {
   .form-wrapper {
-    
-    // .selects-wrapper {
-      
-      
-    //   .select-wrapper {
-    //     display: flex;
-    //     flex-direction: column;
-    //     width: calc(50% - 100px);
-    //     &:first-of-type {
-    //       margin-right: 20px;
-    //     }
-    //   }
-    // }
+    button, label, select {
+      max-width: 500px;
+    }
+    button {
+      height: 80px;
+    }
+    .selects-wrapper {
+      margin: 60px 0;
+    }
+    .select-wrapper {
+      margin: 0 0 20px 0;
+      &:first-of-type {
+        margin-right: 100px;
+      }
+      &:nth-of-type(2) {
+        margin: 0;
+      }
+    }
   }
-
 }
 
 @include mq-retina {
+  .selects-wrapper {
+    margin: 100px 0;
+  }
+  .select-wrapper {
 
+  }
 }

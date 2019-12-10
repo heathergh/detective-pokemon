@@ -63,12 +63,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="wrapper">
         {/* Header & Static Infomation */}
         <Header nameSubmit={() => this.changeScene(1)} />
         {/* Form For User Choices */}
         <main>
-          <div className="wrapper">
+          <div>
             {
               this.state.sceneNumber === 1 
               ? <Form checkResultCallback = {this.checkResult} />

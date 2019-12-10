@@ -6,11 +6,28 @@
         transition: opacity 500ms ease, color 500ms ease, background-color 500ms ease, box-shadow 500ms ease, -webkit-box-shadow 500ms ease;
         border-radius: 5px;
         max-width: 350px;
-        margin-bottom: 20px;
+        margin: 0 auto 20px auto;
         p {
             color: $errorMessageColor;
             text-align: center;
             margin: 0;
         }
     }
+}
+
+@include mq-tablet {
+    .error {
+        padding: 10px 15px;
+        max-width: 400px;
+    }
+
+
+}
+
+@include mq-desktop {
+    .error {
+        padding: 20px 30px;
+        max-width: 500px;
+    }
+
 }

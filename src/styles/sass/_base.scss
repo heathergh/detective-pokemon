@@ -5,19 +5,13 @@
     font-size: $baseFontSize;
     color: $primaryWhite;
   }
-
-  .wrapper {
-    width: 90%;
-    margin: 0 auto;
-    max-width: 1080px;
-  }
   
   body {
     background-image:linear-gradient(to top right, transparentize($primaryColor, 0.2), transparentize(black, 0.2)), url('../assets/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    min-height:100vh;
+    min-height: 100vh;
   }
 
   button {
@@ -56,20 +50,27 @@
   .normalize-text {
     text-transform: lowercase;
   }
+
+  .wrapper {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1080px;
+  }
 }
 
 @include mq-tablet {
-  .wrapper {
-  width: 80%;
-  
-}
-   button {
+  button {
     font-size: 2.5rem;
     padding: 1rem 2.5rem;
-}
-p, label {
-  font-size: 2.3rem;
-}
+  }
+  
+  p, label {
+    font-size: 2.3rem;
+  }
+  
+  .wrapper {
+    width: 80%;
+  }
 }
 
 @include mq-desktop {

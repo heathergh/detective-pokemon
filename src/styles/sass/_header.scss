@@ -15,22 +15,24 @@
     font-family: 'Iceberg', cursive;
     font-size: 3.5rem;
     padding: 2rem 1rem;
-  
     letter-spacing: 0.8rem;
     margin: 0;
     text-transform: uppercase;
     text-align: center;
   }
-    h1::-moz-selection {
-      background-color: black;
-      color: #e5fecc;
+
+  h1::-moz-selection {
+    background-color: black;
+    color: #e5fecc;
   }
-    h1::selection {
-      background-color: #08f;
-      color: #e5fecc;
+
+  h1::selection {
+    background-color: #08f;
+    color: #e5fecc;
   }
-    h1:focus {
-      outline: none;
+
+  h1:focus {
+    outline: none;
   }
 
   @keyframes flicker {
@@ -60,41 +62,42 @@
   h2 {
     font-size: 2.5rem;
     margin-bottom: 0;
-    text-align:center;
-}
+    text-align: center;
+    word-break: break-word;
+  }
 
   p {
     text-align: center;
-}
+  }
 
   .header-form {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-  input, 
-  button {
-    width: 50%;
-  }
+    input, 
+    button {
+      width: 50%;
+    }
 
-  input {
-    padding: 0.8rem;
-    margin: 1rem 0px;
-    &:focus{
-      background-color: $secondaryColor;
+    input {
+      padding: 0.8rem;
+      margin: 1rem 0px;
+      &:focus{
+        background-color: $secondaryColor;
+      }
     }
   }
+}
   
-  @media (max-width: 550px) {
+@media (max-width: 550px) {
   input {
     width: 100%;   
   }
+
   button {
     width:100%;   
   }
-}
-}
-
 }
 
 @include mq-tablet {
@@ -103,8 +106,8 @@
   }
     
   header div {
-      padding-top:4rem;
-    }
+    padding-top:4rem;
+  }
   
 
   h1 {
@@ -114,7 +117,8 @@
 
   h2 {
     font-size: 3rem;
-}
+  }
+
   .header-form input{
     width: auto;
     padding: 1rem 2rem;
@@ -124,7 +128,6 @@
     padding: 1rem 7.7rem;
     width: auto;
   }
-
 }
 
 @include mq-desktop {
@@ -133,10 +136,8 @@
   }
 
   h2 {
-  font-size: 4rem;
-  
-}
-
+    font-size: 4rem;
+  }
 }
 
 @include mq-retina {
