@@ -45,7 +45,7 @@ class Header extends Component {
               <p>Pick a location and a crime, and then decide which Pokemon partner you'll bring with you to the solve the crime.</p>
               <p>Each type of crime requires a different type of Pokemon. What crime will you help solve today?</p>
 
-              <form onSubmit={this.handleNameSubmit} className="header-form">
+              <form onSubmit={this.handleNameSubmit}>
 
                 <label htmlFor="userName">Your name:</label>
                 <input id="userName" type="text" name="userName" value={this.state.userName} onChange={this.handleInputChange} />
