@@ -6,7 +6,7 @@
   header .error {
     position: absolute;
     z-index: 2;
-    bottom: 175px;
+    bottom: 160px;
   }
   header div {
     padding-top: 15px;
@@ -79,6 +79,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 2rem;
     input {
       padding: 0.8rem;
       margin: 1rem 0px;
@@ -117,7 +118,7 @@
 
 @include mq-desktop {
   header form {
-    padding-top: 1rem;
+    padding-top: 3rem;
   }
 
   h2 {

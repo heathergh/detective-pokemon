@@ -306,7 +306,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   header .error {
     position: absolute;
     z-index: 2;
-    bottom: 175px;
+    bottom: 160px;
   }
   header div {
     padding-top: 15px;
@@ -382,6 +382,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    padding-top: 2rem;
   }
   header form input {
     padding: 0.8rem;
@@ -414,7 +415,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 
 @media (min-width: 1080px) {
   header form {
-    padding-top: 1rem;
+    padding-top: 3rem;
   }
   h2 {
     font-size: 4rem;
