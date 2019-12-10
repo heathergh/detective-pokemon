@@ -54,7 +54,7 @@ class Header extends Component {
               </form>
             </div>
             :
-            <h2>Welcome, Detective {this.state.userName}!</h2>
+            <h2>Detective {this.state.userName} is on duty</h2>
         }
 
       </header>
