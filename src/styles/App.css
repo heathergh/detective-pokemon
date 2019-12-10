@@ -466,7 +466,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   }
   .fighting {
     background-color: #763217;
-    color: primaryWhite;
+    color: #fff;
   }
   .flying {
     background-color: #99ACEE;

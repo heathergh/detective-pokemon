@@ -41,7 +41,7 @@
   }
   .fighting {
     background-color: $fighting;
-    color: primaryWhite;
+    color: $primaryWhite;
   }
   .flying {
     background-color: $flying;
@@ -200,7 +200,7 @@
 @include mq-tablet {
   .pokemon-flex {
     width:100%;
-    
+
     &>div {
       width: calc(100%/3 - 20px);
     }
