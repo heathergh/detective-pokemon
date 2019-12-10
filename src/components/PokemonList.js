@@ -52,56 +52,69 @@ class PokemonList extends React.Component {
 
     //Once all the pokemon type calls are back:
     axios.all(pokemonTypePromises).then((response) => {
-      //Go through every call
-      const specificPokemonPromises = [];
-      response.forEach((data) => {
-        //Grab the pokemon data and filter them, so we only have pokemon with ids under 718
-        let listOfPokemon = data.data.pokemon;
-        listOfPokemon = listOfPokemon.filter((pokemon) => {
-          const url = pokemon.pokemon.url;
-          const index = url.slice(34);
-          if (parseInt(index) > 718) {
-            return false;
-          }
-          return true;
-        })
-        //Get a random number, and the pokemon associated with that number
-        const choice = this.getRandomNumber(listOfPokemon.length - 1);
-        const chosenPokemon = listOfPokemon[choice].pokemon;
-        //Create and push a specific axios call for the pokemon chosen
-        const specificCall = axios({
-          method: 'GET',
-          url: chosenPokemon.url,
-          dataResponse: 'json',
-        });
-        specificPokemonPromises.push(specificCall);
-      });
-
-      //Once all 5 axios call are back:
-      axios.all(specificPokemonPromises).then((response) => {
-        //Create an array to hold these pokemon, and extract the data into new objects
-        const newPokemonList = [];
+      //If the first response has pokemon data
+      if(response[0].data.pokemon){
+        //Go through every call
+        const specificPokemonPromises = [];
         response.forEach((data) => {
-          const pokemon = data.data;
-          const newPoke = {
-            name: this.capitalizeWord(pokemon.name),
-            types: pokemon.types,
-            id: pokemon.id,
-          }
-          newPokemonList.push(newPoke);
-        });
-        //Randomize our array of pokemon
-        for (let i = 0; i < newPokemonList.length; i++) {
-          const a = newPokemonList[i];
-          const bIndex = Math.floor(Math.random() * newPokemonList.length);
-          newPokemonList[i] = newPokemonList[bIndex];
-          newPokemonList[bIndex] = a;
-        }
-        //Set the state to hold our new list of 5 pokemon!
-        this.setState({
-          currentPokemon: newPokemonList
+          //Grab the pokemon data and filter them, so we only have pokemon with ids under 718
+          let listOfPokemon = data.data.pokemon;
+          listOfPokemon = listOfPokemon.filter((pokemon) => {
+            const url = pokemon.pokemon.url;
+            const index = url.slice(34);
+            if (parseInt(index) > 718) {
+              return false;
+            }
+            return true;
+          })
+          //Get a random number, and the pokemon associated with that number
+          const choice = this.getRandomNumber(listOfPokemon.length - 1);
+          const chosenPokemon = listOfPokemon[choice].pokemon;
+          //Create and push a specific axios call for the pokemon chosen
+          const specificCall = axios({
+            method: 'GET',
+            url: chosenPokemon.url,
+            dataResponse: 'json',
+          });
+          specificPokemonPromises.push(specificCall);
+          
         })
-      })
+
+        //Once all 5 axios call are back:
+        axios.all(specificPokemonPromises).then((response) => {
+          //Create an array to hold these pokemon, and extract the data into new objects
+          const newPokemonList = [];
+          response.forEach((data) => {
+            const pokemon = data.data;
+            const newPoke = {
+              name: this.capitalizeWord(pokemon.name),
+              types: pokemon.types,
+              id: pokemon.id,
+            }
+            newPokemonList.push(newPoke);
+          });
+          //Randomize our array of pokemon
+          for (let i = 0; i < newPokemonList.length; i++) {
+            const a = newPokemonList[i];
+            const bIndex = Math.floor(Math.random() * newPokemonList.length);
+            newPokemonList[i] = newPokemonList[bIndex];
+            newPokemonList[bIndex] = a;
+          }
+          //Set the state to hold our new list of 5 pokemon!
+          this.setState({
+            currentPokemon: newPokemonList,
+            errorMessage: ''
+          })
+        }).catch(() => {
+          this.setState({
+            errorMessage: 'Error: Problem retrieving Pokemon.'
+          });
+        })
+      }else {
+        this.setState({
+          errorMessage: 'Error: Problem retrieving Pokemon.'
+        });
+      }
     });
   }
 
