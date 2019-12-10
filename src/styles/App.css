@@ -434,6 +434,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   .pokemon-list legend {
     font-size: 2.5rem;
     text-align: center;
+    margin-top: 10px;
   }
   .pokemon-list .error {
     position: absolute;
@@ -617,9 +618,10 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     border: #d5c300 2px solid;
   }
   .pokemon-flex > div {
-    margin: 10px;
+    margin: 10px auto;
     padding: 10px;
     text-align: center;
+    max-width: 250px;
   }
 }
 
