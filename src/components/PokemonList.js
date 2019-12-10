@@ -130,7 +130,7 @@ class PokemonList extends React.Component {
     //If the user has chosen a pokemon,
     if (this.state.userSelection !== '') {
       //Send the data back up through our prop callback, all the way to app.js
-      this.props.checkResultCallback(this.props.crimeProp, this.props.niceCrimeName, this.state.currentPokemon[this.state.userSelection], this.state.correctCrimeInfo);
+      this.props.checkResultCallback(this.props.niceCrimeName, this.state.currentPokemon[this.state.userSelection], this.state.correctCrimeInfo);
     } else {
       //Otherwise display an error message
       this.setState({

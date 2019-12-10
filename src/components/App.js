@@ -22,7 +22,7 @@ class App extends React.Component {
     })
   }
 
-  checkResult = (crimeInfo, crimeCategory, pokemonChoice, correctCrimeChoice) => {
+  checkResult = (crimeCategory, pokemonChoice, correctCrimeChoice) => {
     const newResult = {};
 
     // the default information for the result
