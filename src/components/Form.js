@@ -186,7 +186,7 @@ class Form extends Component {
                             { this.state.errorMessage !== '' ? <ErrorMessage formErrorId={'error-description'}>{this.state.errorMessage}</ErrorMessage> : null }
 
                             <Button onClick={e => { this.clickHandler(e, this.state.userCrimeCategory, this.state.userCrimeLocation)}}>
-                                Get Pokemon Helpers
+                                Get Pokemon
                             </Button>
                         </form>
                     </div>

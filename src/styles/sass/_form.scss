@@ -23,7 +23,6 @@
         background: $primaryAccent;
       }
     }
-
     .select-wrapper {
       display: flex;
       flex-direction: column;
@@ -44,7 +43,6 @@
         text-align: center;
       }
     }
-
     .crime-reminder {
       margin: 0;
       padding: 5px;
@@ -81,6 +79,7 @@
       select {
         margin-top: 25px;
         height: 44px;
+        line-height:
       }
       &:first-of-type {
         margin-right: 60px;
