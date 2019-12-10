@@ -62,7 +62,7 @@ class PokemonList extends React.Component {
           listOfPokemon = listOfPokemon.filter((pokemon) => {
             const url = pokemon.pokemon.url;
             const index = url.slice(34);
-            if (parseInt(index) > 718) {
+            if (parseInt(index) > 717) {
               return false;
             }
             return true;
