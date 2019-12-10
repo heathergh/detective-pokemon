@@ -24,7 +24,7 @@ const Select = ({arrayProp, optionValue, optionName, labelFor, label, selectName
 
     return (
         <>
-            <label htmlFor={labelFor}>{label}</label>
+            <label htmlFor={labelFor} className="instructions">{label}</label>
 
             <select 
                 name={selectName}

@@ -1,27 +1,19 @@
 @import 'fonts';
 
-
-
 @include mq-mobile {
   html {
     font-size: $baseFontSize;
-    color: white;
-  }
-
-  .wrapper {
-    width: 90%;
-    margin: 0 auto;
-    max-width: 1080px;
+    color: $primaryWhite;
   }
   
-
   body {
-  background-image:linear-gradient(to top right, transparentize($primaryColor, 0.2), transparentize(black, 0.2)), url('../assets/background.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  min-height:100vh;
-}
+    background-image:linear-gradient(to top right, transparentize($primaryColor, 0.2), transparentize(black, 0.2)), url('../assets/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    min-height: 100vh;
+    padding: 25px 0 0 0;
+  }
 
   button {
     background-color: $primaryAccent;
@@ -48,34 +40,45 @@
   }
 
   p, label {
-    font-size: 1.95rem;
+    font-size: 2rem;
     font-family: $barlowFontFamily;
   }
 
   button, input,  input::placeholder {
-    font-size: 1.95rem;
+    font-size: 2rem;
   }
 
   .normalize-text {
     text-transform: lowercase;
   }
+
+  .wrapper {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1080px;
+  }
 }
 
 @include mq-tablet {
-  .wrapper {
-  width: 80%;
-  
-}
-   button {
+  body {
+    padding: 4rem 0 0 0;
+  }
+  button {
     font-size: 2.5rem;
     padding: 1rem 2.5rem;
-}
-p, label {
-  font-size: 2.3rem;
-}
+  }
+  
+  p, label {
+    font-size: 2.3rem;
+  }
+  
+  .wrapper {
+    width: 80%;
+  }
 }
 
 @include mq-desktop {
+
 
 
 }
