@@ -129,7 +129,7 @@ class PokemonList extends React.Component {
 
   render() {
     return (
-      <div className="pokemon-list">
+      <div>
         <form className="pokemon-list" id="pokemonList">
           <legend> Select a pokemon to help you with this case:</legend>
           <div className="pokemon-flex">
