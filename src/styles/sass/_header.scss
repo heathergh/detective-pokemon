@@ -14,9 +14,9 @@
   
   h1 {
     animation: flicker 3s infinite alternate;
-    border: 0.4rem solid #fff;
+    border: 0.4rem solid $primaryWhite;
     border-radius: 3rem;
-    color: #e5fecc;
+    color: $secondaryColor;
     font-family: 'Iceberg', cursive;
     font-size: 3.5rem;
     padding: 2rem 1rem;
@@ -27,33 +27,34 @@
     text-align: center;
   }
   h1::-moz-selection {
-    background-color: black;
-    color: #e5fecc;
+    background-color: $black;
+    color: $secondaryColor;
   }
   h1::selection {
-    background-color: #08f;
-    color: #e5fecc;
+    background-color: $headingSelection;
+    color: $secondaryColor;
   }
   h1:focus {
     outline: none;
+    border: 0.4rem solid $primaryWhite;
   }
   @keyframes flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
       text-shadow:
-        -0.2rem -0.2rem 1rem #d5c300,
-        0.2rem 0.2rem 1rem #d5c300,
-        0 0 2rem #08f,
-        0 0 4rem #08f,
-        0 0 6rem #08f,
-        0 0 8rem #08f,
-        0 0 10rem #08f;
+        -0.2rem -0.2rem 1rem $primaryAccent,
+        0.2rem 0.2rem 1rem $primaryAccent,
+        0 0 2rem $headingSelection,
+        0 0 4rem $headingSelection,
+        0 0 6rem $headingSelection,
+        0 0 8rem $headingSelection,
+        0 0 10rem $headingSelection;
       box-shadow:
-        0 0 .5rem #fff,
-        inset 0 0 .5rem #fff,
-        0 0 2rem #273878,
-        inset 0 0 2rem #273878,
-        0 0 4rem #08f,
-        inset 0 0 4rem #273878;
+        0 0 .5rem $primaryWhite,
+        inset 0 0 .5rem $primaryWhite,
+        0 0 2rem $primaryColor,
+        inset 0 0 2rem $primaryColor,
+        0 0 4rem $headingSelection,
+        inset 0 0 4rem $primaryColor;
     }
     20%, 24%, 55% {
       text-shadow: none;

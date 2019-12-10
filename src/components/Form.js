@@ -45,7 +45,11 @@ class Form extends Component {
             this.setState({
                 crimeCategories: filteredCrimeCategories
             })
-        })
+        }).catch(() => {
+            this.setState({
+                errorMessage: 'Error: there are no crimes currently available. Please try again later.',
+            });
+        });
     }
 
     // event handler to get option selected by user made with params to populate state passed as argument to make it reusable
@@ -105,25 +109,25 @@ class Form extends Component {
             }
         }).then(response =>  {
             const randomIndex = this.getRandomIndex(response.data.length);
+
             if (response.data.length) {
                 const chosenCrime = response.data[randomIndex];
+                
                 this.setState({
                     crime: chosenCrime,
                     errorMessage: '',
-                }, () => {
-                    // we got crime data back, so show the pokemonlist component
-                    this.setState({
-                        showPokemon: true
-                    })
+                    showPokemon: true
                 });
             } else {
                 this.setState({
                     errorMessage: 'Error: there are no results for that type of crime at the location you selected.',
                 })
             }
-        }).catch(error => {
-            console.log(`uh-oh, something went wrong. Here's the error message: ${error}`);
-        })
+        }).catch(() => {
+            this.setState({
+                errorMessage: 'Error: there are no crimes currently available. Please try again later.',
+            });
+        });
     }
 
 

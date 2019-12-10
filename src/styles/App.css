@@ -326,7 +326,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     text-align: center;
   }
   h1::-moz-selection {
-    background-color: black;
+    background-color: #000;
     color: #e5fecc;
   }
   h1::selection {
@@ -335,12 +335,13 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   }
   h1:focus {
     outline: none;
+    border: 0.4rem solid #fff;
   }
   @-webkit-keyframes flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
       text-shadow: -0.2rem -0.2rem 1rem #d5c300, 0.2rem 0.2rem 1rem #d5c300, 0 0 2rem #08f, 0 0 4rem #08f, 0 0 6rem #08f, 0 0 8rem #08f, 0 0 10rem #08f;
-      -webkit-box-shadow: 0 0 .5rem #fff, inset 0 0 .5rem #fff, 0 0 2rem #273878, inset 0 0 2rem #273878, 0 0 4rem #08f, inset 0 0 4rem #273878;
-              box-shadow: 0 0 .5rem #fff, inset 0 0 .5rem #fff, 0 0 2rem #273878, inset 0 0 2rem #273878, 0 0 4rem #08f, inset 0 0 4rem #273878;
+      -webkit-box-shadow: 0 0 0.5rem #fff, inset 0 0 0.5rem #fff, 0 0 2rem #273878, inset 0 0 2rem #273878, 0 0 4rem #08f, inset 0 0 4rem #273878;
+              box-shadow: 0 0 0.5rem #fff, inset 0 0 0.5rem #fff, 0 0 2rem #273878, inset 0 0 2rem #273878, 0 0 4rem #08f, inset 0 0 4rem #273878;
     }
     20%, 24%, 55% {
       text-shadow: none;
@@ -351,8 +352,8 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   @keyframes flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
       text-shadow: -0.2rem -0.2rem 1rem #d5c300, 0.2rem 0.2rem 1rem #d5c300, 0 0 2rem #08f, 0 0 4rem #08f, 0 0 6rem #08f, 0 0 8rem #08f, 0 0 10rem #08f;
-      -webkit-box-shadow: 0 0 .5rem #fff, inset 0 0 .5rem #fff, 0 0 2rem #273878, inset 0 0 2rem #273878, 0 0 4rem #08f, inset 0 0 4rem #273878;
-              box-shadow: 0 0 .5rem #fff, inset 0 0 .5rem #fff, 0 0 2rem #273878, inset 0 0 2rem #273878, 0 0 4rem #08f, inset 0 0 4rem #273878;
+      -webkit-box-shadow: 0 0 0.5rem #fff, inset 0 0 0.5rem #fff, 0 0 2rem #273878, inset 0 0 2rem #273878, 0 0 4rem #08f, inset 0 0 4rem #273878;
+              box-shadow: 0 0 0.5rem #fff, inset 0 0 0.5rem #fff, 0 0 2rem #273878, inset 0 0 2rem #273878, 0 0 4rem #08f, inset 0 0 4rem #273878;
     }
     20%, 24%, 55% {
       text-shadow: none;
