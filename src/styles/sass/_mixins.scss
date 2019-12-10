@@ -4,6 +4,12 @@
     }
 }
 
+@mixin mq-mobile-wrapper {
+    @media(max-width: 550px) {
+        @content;
+    }
+}
+
 @mixin mq-between-mobile-tablet {
     @media(min-width: 500px) {
         @content;
