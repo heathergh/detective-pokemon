@@ -2,7 +2,7 @@ import React from 'react';
 
 const Button = ({onClick, firstParam = '', secondParam = '', children}) => {
     return (
-        <button type="submit" className="" onClick={ (e) => onClick(e, firstParam, secondParam)}
+        <button type="submit" className="submitButton" onClick={ (e) => onClick(e, firstParam, secondParam)}
         >{children}</button>
     )
 }

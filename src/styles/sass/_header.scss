@@ -64,42 +64,28 @@
   h2 {
     font-size: 2.5rem;
     text-align:center;
-}
+  }
 
   p {
     text-align: center;
-}
+  }
 
   header form {
-
     position:relative;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-  input, 
-  button {
-    width: 50%;
-  }
 
-  input {
-    padding: 0.8rem;
-    margin: 1rem 0px;
-    &:focus{
-      background-color: $secondaryColor;
+
+    input {
+      padding: 0.8rem;
+      margin: 1rem 0px;
+      &:focus{
+        background-color: $secondaryColor;
+      }
     }
-  }
-  
-  @media (max-width: 550px) {
-  input {
-    width: 100%;   
-  }
-  button {
-    width:100%;   
-  }
-  }
 }
-
 }
 
 @include mq-tablet {
@@ -120,8 +106,7 @@
     font-size: 3rem;
 }
   header form {
-    input,
-    button {
+    input {
     width: auto;
   }
 
@@ -129,9 +114,7 @@
     padding: 1rem 2rem;
   }
 
-    button {
-    padding: 1rem 7.7rem;
-  }
+    
 }
 
 }
