@@ -277,7 +277,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
             box-shadow: 0 0 0 1px #AA92A0 inset, 0 0 0 0 transparent;
     transition: opacity 500ms ease, color 500ms ease, background-color 500ms ease, box-shadow 500ms ease, -webkit-box-shadow 500ms ease;
     border-radius: 5px;
-    max-width: 350px;
+    max-width: 250px;
     margin: 0 auto 20px auto;
   }
   .error p {
