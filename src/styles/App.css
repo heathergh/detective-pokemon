@@ -660,14 +660,14 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 @media (min-width: 320px) {
-  .headerForResult {
+  .header-for-result {
     color: #d5c300;
     margin-top: 3rem;
     text-transform: uppercase;
     font-family: "Iceberg", cursive;
     font-size: 3rem;
   }
-  .playAgain {
+  .play-again {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -684,7 +684,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 @media (min-width: 1080px) {
-  .headerForResult {
+  .header-for-result {
     font-size: 5rem;
   }
 }
