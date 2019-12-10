@@ -3,13 +3,17 @@
     display: flex;
     justify-content: center;
     text-align: center;
+
     label, select {
       width: 100%;
     }
+
     .selects-wrapper {
+
       p, label {
         font-size: 2rem;
       }
+
       .instructions {
         color: $primaryColor;
         padding: 10px 5px;
@@ -17,16 +21,20 @@
         background: $primaryAccent;
       }
     }
+
     .select-wrapper {
       display: flex;
       flex-direction: column;
       margin: 20px 0;
+
       &:nth-of-type(2) {
         margin: 40px 0  30px 0;
       }
+
       label {
         color: $primaryWhite;
       }
+
       select {
         border-width: thin;
         border-radius: 5px;
@@ -37,10 +45,12 @@
       }
     }
   }
+
   .crime-reminder {
     margin: 0;
     padding: 5px;
   }
+
   .crime-reminder-accent {
     color: $primaryAccent;
   }
@@ -49,31 +59,38 @@
 @include mq-tablet {
   .form-wrapper {
     display: block;
+
     label, select {
       max-width: none;
     }
+
     .selects-wrapper {
       display: flex;
       align-self: normal;
       justify-content: space-between;
       max-width: none;
     }
+
     .select-wrapper {
       display: flex;
       flex-direction: column;
       width: 100%;
+
       label {
         max-width: none;
         width: 100%;
       }
+
       select {
         margin-top: 25px;
         height: 44px;
         line-height: 44px;
       }
+
       &:first-of-type {
         margin-right: 60px;
       }
+
       &:nth-of-type(2) {
         margin: 20px 0 0 0;
       }
@@ -83,17 +100,22 @@
 
 @include mq-desktop {
   .form-wrapper {
+
     label, select {
       max-width: 500px;
     }
+
     .selects-wrapper {
       margin: 60px 0;
     }
+
     .select-wrapper {
       margin: 0 0 20px 0;
+
       &:first-of-type {
         margin-right: 100px;
       }
+      
       &:nth-of-type(2) {
         margin: 0;
       }

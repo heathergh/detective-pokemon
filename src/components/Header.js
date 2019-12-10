@@ -37,7 +37,6 @@ class Header extends Component {
       <header className="wrapper">
         <h1>Detective Pokemon</h1>
 
-
         {
           !this.state.nameChoosen ?
             <div>
