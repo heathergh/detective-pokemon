@@ -119,6 +119,7 @@ class PokemonList extends React.Component {
     if(window.innerWidth > 1080){
       this.scrollToBottom();
     }
+    //Set the state to hold the value of the radio button selection
     this.setState({
       userSelection: event.target.value
     });
@@ -158,7 +159,7 @@ class PokemonList extends React.Component {
                     <div key={i}>
                       <input type="radio" name="pokemon" id={poke.id} value={i} checked={parseInt(this.state.userSelection) === i} onChange={this.handleOptionChange} />
                       <label htmlFor={poke.id}>
-                        <img src={pokemonImages[poke.id - 1]} alt={`here is${poke.name}`} />
+                        <img src={pokemonImages[poke.id - 1]} alt={`Here's the Pokemon ${poke.name}.`} />
                         <h2>{poke.name}</h2>
                         <div className="pokemon-types">
                           {
@@ -168,22 +169,22 @@ class PokemonList extends React.Component {
                               )
                             })
                           }
-                        </div>
+                        </div> {/* End of Type Div */}
                       </label>
-                    </div>
+                    </div> /* End of Pokemon radio button div */
                   )
                 })
               : <div className="pokeball-loader">
                   <div className="pokeball">
                   	<img src={pokeball} alt="Loading the pokemon api!" />
                   </div>
-                </div>
+                </div> /* End of Loader Div */
             }
-          </div>
+          </div> {/* End of pokemon-flex div */}
           <button id="submit" onClick={this.returnedSelection} ref={(element) => { this.investigationButton = element; }}>Start investigation!</button>
           {this.state.errorMessage !== '' ? <ErrorMessage id={'error-description'}>{this.state.errorMessage}</ErrorMessage> : null}
-        </form>
-      </div>
+        </form> {/* End of pokemon selection form */}
+      </div> /* End of PokemonList render div */
     );
   }
 };
