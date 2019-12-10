@@ -183,7 +183,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 @media (min-width: 320px) {
   html {
     font-size: 62.5%;
-    color: #FFFFFF;
+    color: #fff;
   }
   .wrapper {
     width: 90%;
@@ -270,7 +270,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 
 @media (min-width: 320px) {
   body {
-    padding: 25px 0px;
+    padding: 25px 0 0 0;
   }
   header div {
     padding-top: 15px;
@@ -324,12 +324,13 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   }
   h2 {
     font-size: 2.5rem;
+    margin-bottom: 0;
     text-align: center;
   }
   p {
     text-align: center;
   }
-  form {
+  .header-form {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -341,24 +342,24 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
         -ms-flex-align: center;
             align-items: center;
   }
-  form input,
-  form button {
+  .header-form input,
+  .header-form button {
     width: 50%;
   }
-  form input {
+  .header-form input {
     padding: 0.8rem;
     margin: 1rem 0px;
   }
-  form input:focus {
+  .header-form input:focus {
     background-color: #e5fecc;
   }
 }
 
 @media (min-width: 320px) and (max-width: 550px) {
-  form input {
+  .header-form input {
     width: 100%;
   }
-  form button {
+  .header-form button {
     width: 100%;
   }
 }
@@ -377,18 +378,18 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   h2 {
     font-size: 3rem;
   }
-  form input {
+  .header-form input {
     width: auto;
     padding: 1rem 2rem;
   }
-  form button {
+  .header-form button {
     padding: 1rem 7.7rem;
     width: auto;
   }
 }
 
 @media (min-width: 1080px) {
-  form {
+  .header-form {
     padding-top: 1rem;
   }
   h2 {
@@ -424,10 +425,10 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     margin: 20px 0;
   }
   .form-wrapper .select-wrapper label {
-    color: #FFFFFF;
+    color: #fff;
     margin-left: 5px;
     margin-right: 5px;
-    border-bottom: 1px solid #FFFFFF;
+    border-bottom: 1px solid #fff;
     padding-bottom: 5px;
     text-align: center;
   }

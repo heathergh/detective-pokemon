@@ -150,7 +150,7 @@ class Form extends Component {
                         <form>
                             <div className="selects-wrapper">
                                 <div className="select-wrapper">
-                                    <p className="instructions">Choose a location to investigate a crime</p>
+                                    <p className="instructions">Choose a crime location</p>
                                     <Select
                                         changeHandler={e => {
                                             this.getUserInput(e, 'userCrimeLocation', 'userNiceLocationName')
@@ -166,7 +166,7 @@ class Form extends Component {
                                 </div>
                                         
                                 <div className="select-wrapper">
-                                    <p className="instructions">Choose a type of crime to investigate</p>
+                                    <p className="instructions">Choose a type of crime</p>
                                     <Select
                                         changeHandler={e => {
                                             this.getUserInput(e, 'userCrimeCategory', 'userNiceCategoryName')

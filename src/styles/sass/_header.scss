@@ -1,11 +1,11 @@
 @include mq-mobile {
   body {
-    padding: 25px 0px;
+    padding: 25px 0 0 0;
   }
    
   header div {
     padding-top:15px;
-    }
+  }
   
   h1 {
   // animation: flicker 3s infinite alternate;
@@ -20,18 +20,19 @@
     margin: 0;
     text-transform: uppercase;
     text-align: center;
-}
-  h1::-moz-selection {
-    background-color: black;
-    color: #e5fecc;
-}
-  h1::selection {
-    background-color: #08f;
-    color: #e5fecc;
-}
-  h1:focus {
-    outline: none;
-}
+  }
+    h1::-moz-selection {
+      background-color: black;
+      color: #e5fecc;
+  }
+    h1::selection {
+      background-color: #08f;
+      color: #e5fecc;
+  }
+    h1:focus {
+      outline: none;
+  }
+
   @keyframes flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
         text-shadow:
@@ -54,10 +55,11 @@
         text-shadow: none;
         box-shadow: none;
     }
-}
+  }
 
   h2 {
     font-size: 2.5rem;
+    margin-bottom: 0;
     text-align:center;
 }
 
@@ -65,7 +67,7 @@
     text-align: center;
 }
 
-  form {
+  .header-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -106,20 +108,19 @@
   
 
   h1 {
-
-      font-size: 8rem;
-      padding: 2rem 4rem 2.7rem;
+    font-size: 8rem;
+    padding: 2rem 4rem 2.7rem;
   }
 
   h2 {
     font-size: 3rem;
 }
-  form input{
+  .header-form input{
     width: auto;
     padding: 1rem 2rem;
   }
 
-  form button {
+  .header-form button {
     padding: 1rem 7.7rem;
     width: auto;
   }
@@ -127,7 +128,7 @@
 }
 
 @include mq-desktop {
-  form {
+  .header-form {
     padding-top: 1rem;
   }
 
