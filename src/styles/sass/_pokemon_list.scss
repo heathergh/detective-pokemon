@@ -36,20 +36,23 @@
     border: 1px solid $primaryColor;
     color: $almostBlack;
   }
+  .fighting,
+  .poison,
+  .dark {
+    color: $primaryWhite;
+  }
 
   .normal {
     background-color: $normal;
   }
   .fighting {
     background-color: $fighting;
-    color: $primaryWhite;
   }
   .flying {
     background-color: $flying;
   }
   .poison {
     background-color: $poison;
-    color: $primaryWhite;
   }
   .ground {
     background-color: $ground;
@@ -89,7 +92,6 @@
   }
   .dark {
     background-color: $dark;
-    color: $primaryWhite;
   }
   .fairy {
     background-color: $fairy;

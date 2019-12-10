@@ -592,19 +592,22 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     border: 1px solid #273878;
     color: #222;
   }
+  .fighting,
+  .poison,
+  .dark {
+    color: #fff;
+  }
   .normal {
     background-color: #CCC7C0;
   }
   .fighting {
     background-color: #763217;
-    color: #fff;
   }
   .flying {
     background-color: #99ACEE;
   }
   .poison {
     background-color: #A45CA4;
-    color: #fff;
   }
   .ground {
     background-color: #D4B661;
@@ -644,7 +647,6 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   }
   .dark {
     background-color: #644D3D;
-    color: #fff;
   }
   .fairy {
     background-color: #F4BBF3;

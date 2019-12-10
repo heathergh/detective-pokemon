@@ -17,9 +17,6 @@ class Form extends Component {
             userCrimeCategory: '',
             userNiceCategoryName: '',
             errorMessage: '',
-            // TODO: Remove if we do not reach this stretch goal
-            // errorMessageCount: 0,
-            // TODO: Remove if we do not reach stretch goal to display more crime info
             crime: {},
             categoryValid: false,
             locationValid: false,
@@ -105,20 +102,16 @@ class Form extends Component {
             method: 'get',
             params: {
                 poly: location,
-                month: '2019-11'
             }
         }).then(response =>  {
-            // TODO: Remove this if we don't reach stretch goal
             const randomIndex = this.getRandomIndex(response.data.length);
-
             if (response.data.length) {
                 const chosenCrime = response.data[randomIndex];
                 this.setState({
-                    // TODO: Remove this if we don't reach stretch goal
                     crime: chosenCrime,
                     errorMessage: '',
                 }, () => {
-                    // placeholder for Pokemon function invocation
+                    // we got crime data back, so show the pokemonlist component
                     this.setState({
                         showPokemon: true
                     })
@@ -126,9 +119,6 @@ class Form extends Component {
             } else {
                 this.setState({
                     errorMessage: 'Error: there are no results for that type of crime at the location you selected.',
-                    // TODO: Remove if we do not reach this stretch goal
-                    // adding errorMessageCount for stretch goal to display message to user if error message shows up three times
-                    // errorMessageCount: this.state.errorMessageCount + 1
                 })
             }
         }).catch(error => {
@@ -141,6 +131,7 @@ class Form extends Component {
         return (
             <>
             {
+                // this.state.showPokemon is set to true when the crime data has come back
                 this.state.showPokemon
                 ?   <> 
                         <p className="crime-reminder">You're in <span className="crime-reminder-accent">{this.state.userNiceLocationName}</span> solving a case about <span className="normalize-text crime-reminder-accent">{this.state.userNiceCategoryName}</span>.</p>
@@ -150,7 +141,6 @@ class Form extends Component {
                         <form>
                             <div className="selects-wrapper">
                                 <div className="select-wrapper">
-                                    {/* <p className="instructions">Choose a crime location</p> */}
                                     <Select
                                         changeHandler={e => {
                                             this.getUserInput(e, 'userCrimeLocation', 'userNiceLocationName')
@@ -166,7 +156,6 @@ class Form extends Component {
                                 </div>
                                         
                                 <div className="select-wrapper">
-                                    {/* <p className="">Choose a type of crime</p> */}
                                     <Select
                                         changeHandler={e => {
                                             this.getUserInput(e, 'userCrimeCategory', 'userNiceCategoryName')
