@@ -409,10 +409,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     margin: 0;
     padding: 5px;
   }
-  .crime-reminder-location {
-    color: #d5c300;
-  }
-  .crime-reminder-crime {
+  .crime-reminder-accent {
     color: #d5c300;
   }
 }
@@ -462,19 +459,21 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     border-radius: 50px;
     padding: 5px 10px 8px;
     border: 1px solid #273878;
+    color: #222;
   }
   .normal {
     background-color: #CCC7C0;
-    color: #222;
   }
   .fighting {
     background-color: #763217;
+    color: primaryWhite;
   }
   .flying {
     background-color: #99ACEE;
   }
   .poison {
     background-color: #A45CA4;
+    color: #fff;
   }
   .ground {
     background-color: #D4B661;
@@ -490,7 +489,6 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   }
   .steel {
     background-color: #C3C3CF;
-    color: #222;
   }
   .fire {
     background-color: #E74D03;
@@ -503,24 +501,22 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   }
   .electric {
     background-color: #FEC81E;
-    color: #222;
   }
   .psychic {
     background-color: #F15F90;
   }
   .ice {
     background-color: #B1EBFE;
-    color: #222;
   }
   .dragon {
     background-color: #8776E1;
   }
   .dark {
     background-color: #644D3D;
+    color: #fff;
   }
   .fairy {
     background-color: #F4BBF3;
-    color: #222;
   }
   @-webkit-keyframes pokeball-spin {
     0% {
@@ -552,28 +548,25 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     margin: 0;
   }
   .pokemon-flex input {
-    opacity: 0;
-    position: absolute;
     width: 0;
+    position: absolute;
+    opacity: 0;
   }
   .pokemon-flex img {
+    display: block;
     max-width: 100%;
     height: 125px;
-    display: block;
   }
   .pokemon-flex .pokeball-loader {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    position: relative;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     overflow: hidden;
   }
   .pokemon-flex .pokeball-loader .pokeball {
-    position: relative;
-    left: 0;
     -webkit-animation: pokeball-spin 1s infinite linear alternate;
             animation: pokeball-spin 1s infinite linear alternate;
   }
@@ -630,10 +623,6 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     -webkit-box-align: center;
@@ -660,14 +649,9 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 @media (min-width: 1080px) {
-  .pokemon-flex {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-  }
   .pokemon-flex > div {
-    width: calc((100%) / 5 - 20px);
+    width: calc(100%/ 5 - 10px);
+    margin: 5px;
   }
 }
 
