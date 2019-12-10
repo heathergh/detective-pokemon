@@ -62,10 +62,11 @@
     margin: 0 auto;
     max-width: 1080px;
   }
-  @media (max-width: 550px) {
-    input, button {
-      width: 100%;   
-    }
+}
+
+@media (max-width: 550px) {
+  input, button {
+    width: 100%;
   }
 }
 
@@ -87,14 +88,4 @@
   .wrapper {
     width: 80%;
   }
-}
-
-@include mq-desktop {
-
-
-
-}
-
-@include mq-retina {
-
 }

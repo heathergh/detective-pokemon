@@ -245,7 +245,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   }
 }
 
-@media (min-width: 320px) and (max-width: 550px) {
+@media (max-width: 550px) {
   input, button {
     width: 100%;
   }
@@ -312,6 +312,8 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     padding-top: 15px;
   }
   h1 {
+    -webkit-animation: flicker 3s infinite alternate;
+            animation: flicker 3s infinite alternate;
     border: 0.4rem solid #fff;
     border-radius: 3rem;
     color: #e5fecc;
@@ -403,8 +405,6 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   }
   header form input {
     width: auto;
-  }
-  header form input {
     padding: 1rem 2rem;
   }
 }
