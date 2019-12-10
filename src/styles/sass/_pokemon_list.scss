@@ -1,8 +1,12 @@
 @include mq-mobile {
   .pokemon-list {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     legend {
       font-size: 2.5rem;
+      text-align: center;
     }
     .error {
       position: absolute;
@@ -165,8 +169,8 @@
     }
 
     &>div {
-      width: 100%;
       margin:10px;
+      padding: 10px;
       text-align: center;
     }
   }
@@ -189,7 +193,7 @@
 
 @include mq-tablet {
   .pokemon-flex {
-    width:90%;
+    width:100%;
     &>div {
       width: calc(100%/3 - 20px);
     }
@@ -198,7 +202,6 @@
 @include mq-desktop {
   .pokemon-flex {
     flex-direction: row;
-    width: 100%;
     &>div {
       width: calc((100%) / 5 - 20px);
     }
