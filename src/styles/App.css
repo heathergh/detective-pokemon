@@ -336,6 +336,8 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   h1:focus {
     outline: none;
     border: 0.4rem solid #fff;
+    background-color: black;
+    color: #e5fecc;
   }
   @-webkit-keyframes flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {

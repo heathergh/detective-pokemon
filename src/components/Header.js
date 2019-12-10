@@ -35,7 +35,7 @@ class Header extends Component {
   render() {
     return (
       <header className="wrapper">
-        <h1>Detective Pokemon</h1>
+        <h1 tabindex='0'>Detective Pokemon</h1>
 
         {
           !this.state.nameChoosen ?
