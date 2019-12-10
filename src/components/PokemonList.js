@@ -18,7 +18,9 @@ class PokemonList extends React.Component {
     }
   }
   componentDidMount() {
+    //Set a default correct crime type
     let correctTypeNumber = 1;
+    //Find the pokemon type that matches with the passed crime information
     for (let key in crimes) {
       if (key === this.props.crimeProp.category) {
         correctTypeNumber = crimes[key].successfulType;
@@ -28,7 +30,9 @@ class PokemonList extends React.Component {
       }
     }
 
+    //Create an array of pokemon type promises
     const pokemonTypePromises = [];
+    //Create and push an axios call for the one known pokemon type
     const correctType = axios({
       method: 'GET',
       url: `https://pokeapi.co/api/v2/type/${correctTypeNumber}`,
@@ -36,6 +40,7 @@ class PokemonList extends React.Component {
     });
     pokemonTypePromises.push(correctType);
 
+    //Create and push 4 more pokemon type calls -> random pokemon types
     for (let i = 0; i < 4; i++) {
       const otherChoice = axios({
         method: 'GET',
@@ -45,9 +50,12 @@ class PokemonList extends React.Component {
       pokemonTypePromises.push(otherChoice);
     }
 
+    //Once all the pokemon type calls are back:
     axios.all(pokemonTypePromises).then((response) => {
+      //Go through every call
       const specificPokemonPromises = [];
       response.forEach((data) => {
+        //Grab the pokemon data and filter them, so we only have pokemon with ids under 718
         let listOfPokemon = data.data.pokemon;
         listOfPokemon = listOfPokemon.filter((pokemon) => {
           const url = pokemon.pokemon.url;
@@ -55,11 +63,12 @@ class PokemonList extends React.Component {
           if (parseInt(index) > 718) {
             return false;
           }
-
           return true;
         })
+        //Get a random number, and the pokemon associated with that number
         const choice = this.getRandomNumber(listOfPokemon.length - 1);
         const chosenPokemon = listOfPokemon[choice].pokemon;
+        //Create and push a specific axios call for the pokemon chosen
         const specificCall = axios({
           method: 'GET',
           url: chosenPokemon.url,
@@ -68,7 +77,9 @@ class PokemonList extends React.Component {
         specificPokemonPromises.push(specificCall);
       });
 
+      //Once all 5 axios call are back:
       axios.all(specificPokemonPromises).then((response) => {
+        //Create an array to hold these pokemon, and extract the data into new objects
         const newPokemonList = [];
         response.forEach((data) => {
           const pokemon = data.data;
@@ -79,12 +90,14 @@ class PokemonList extends React.Component {
           }
           newPokemonList.push(newPoke);
         });
+        //Randomize our array of pokemon
         for (let i = 0; i < newPokemonList.length; i++) {
           const a = newPokemonList[i];
           const bIndex = Math.floor(Math.random() * newPokemonList.length);
           newPokemonList[i] = newPokemonList[bIndex];
           newPokemonList[bIndex] = a;
         }
+        //Set the state to hold our new list of 5 pokemon!
         this.setState({
           currentPokemon: newPokemonList
         })
@@ -100,7 +113,9 @@ class PokemonList extends React.Component {
     return newWord;
   }
 
+  
   handleOptionChange = (event) => {
+    //When a pokemon is chosen, and we're on desktop, scroll to the button
     if(window.innerWidth > 1080){
       this.scrollToBottom();
     }
@@ -111,9 +126,12 @@ class PokemonList extends React.Component {
 
   returnedSelection = (e) => {
     e.preventDefault();
+    //If the user has chosen a pokemon,
     if (this.state.userSelection !== '') {
+      //Send the data back up through our prop callback, all the way to app.js
       this.props.checkResultCallback(this.props.crimeProp, this.props.niceCrimeName, this.state.currentPokemon[this.state.userSelection], this.state.correctCrimeInfo);
     } else {
+      //Otherwise display an error message
       this.setState({
         errorMessage: "Please select a pokemon!"
       })
