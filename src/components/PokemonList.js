@@ -129,10 +129,10 @@ class PokemonList extends React.Component {
 
   render() {
     return (
-      <div className="pokemonList">
-        <form className="pokemonList" id="pokemonList">
+      <div className="pokemon-list">
+        <form className="pokemon-list" id="pokemonList">
           <legend> Select a pokemon to help you with this case:</legend>
-          <div className="pokemonFlex">
+          <div className="pokemon-flex">
             {
               this.state.currentPokemon.length > 0
               ? this.state.currentPokemon.map((poke, i) => {
@@ -142,11 +142,11 @@ class PokemonList extends React.Component {
                       <label htmlFor={poke.id}>
                         <img src={pokemonImages[poke.id - 1]} alt={`here is${poke.name}`} />
                         <h2>{poke.name}</h2>
-                        <div className="pokemonTypes">
+                        <div className="pokemon-types">
                           {
                             poke.types.map((type, i) => {
                               return (
-                                <div key={type.type.name}><span className={`pokemonTypeSpan ${type.type.name}`}>{type.type.name}</span></div>
+                                <div key={type.type.name}><span className={`pokemon-type-span ${type.type.name}`}>{type.type.name}</span></div>
                               )
                             })
                           }
@@ -155,7 +155,7 @@ class PokemonList extends React.Component {
                     </div>
                   )
                 })
-              : <div className="pokeballLoader">
+              : <div className="pokeball-loader">
                   <div className="pokeball">
                   	<img src={pokeball} alt="Loading the pokemon api!" />
                   </div>
