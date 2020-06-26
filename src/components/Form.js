@@ -7,186 +7,187 @@ import ErrorMessage from './ErrorMessage';
 import PokemonList from './PokemonList';
 
 class Form extends Component {
-    constructor() {
-        super();
-        this.state = {
-            crimeLocations: locations,
-            crimeCategories: [],
-            userCrimeLocation: '',
-            userNiceLocationName: '',
-            userCrimeCategory: '',
-            userNiceCategoryName: '',
-            errorMessage: '',
-            crime: {},
-            categoryValid: false,
-            locationValid: false,
-            showPokemon: false
-        }
-    }
+  constructor() {
+      super();
+      this.state = {
+          crimeLocations: locations,
+          crimeCategories: [],
+          chosenCrimeLocation: '',
+          userInputs: [],
+          chosenCrimeCategory: '',
+          errorMessage: '',
+          crime: {},
+          categoryValid: false,
+          locationValid: false,
+          showPokemon: false
+      }
+  }
 
-    // call UK Police API to get crime categories to dynamically populate crime categories select
-    componentDidMount() {
-        this.callUkApiEndPoint('crime-categories');
-    }
+  // call UK Police API to get crime categories to dynamically populate crime categories select
+  componentDidMount() {
+      this.callUkApiEndPoint('crime-categories');
+  }
 
-    // get random index from length of array
-    getRandomIndex = arrayLength => { 
-        return Math.floor(Math.random() * arrayLength);
-    }
+  // API call to UK Police API and get crime categories to update the crime category dropdown select element
+  // Written to accept an argument to make the API call reusable for stretch goal to get crime information based on persistent_id
+  callUkApiEndPoint = endPoint => {
+      axios({
+          url: `https://data.police.uk/api/${endPoint}`,
+          method: 'get'
+      }).then(response =>  {
+          const filteredCrimeCategories = response.data.filter(crime => crime.url !== 'all-crime' && crime.url !== 'other-crime' && crime.url !== 'other-theft');
 
-    // API call to UK Police API and get crime categories to update state
-    callUkApiEndPoint = endPoint => {
-        axios({
-            url: `https://data.police.uk/api/${endPoint}`,
-            method: 'get'
-        }).then(response =>  {
-            const filteredCrimeCategories = response.data.filter(crime => crime.url !== 'all-crime' && crime.url !== 'other-crime' && crime.url !== 'other-theft');
-            
-            this.setState({
-                crimeCategories: filteredCrimeCategories
-            })
-        }).catch(() => {
-            this.setState({
-                errorMessage: 'Error: there are no crimes currently available. Please try again later.',
-            });
-        });
-    }
+          this.setState({
+              crimeCategories: filteredCrimeCategories
+          })
+      }).catch(() => {
+          // if API call fails, show message to user that crimes are unavailable
+          this.setState({
+              errorMessage: 'Error: there are no crimes currently available. Please try again later.',
+          });
+      });
+  }
 
-    // event handler to get option selected by user made with params to populate state passed as argument to make it reusable
-    getUserInput = (e, firstStateToUpdate, secondStateToUpdate) => {
-        e.preventDefault();
+  // get random index from length of array
+    getRandomIndex = arrayLength => {
+      return Math.floor(Math.random() * arrayLength);
+  }
 
-        const index = e.nativeEvent.target.selectedIndex;
-        
-        this.setState({
-            [firstStateToUpdate]: e.target.value,
-            [secondStateToUpdate]: e.nativeEvent.target[index].text
+  // event handler to get option selected by user made with params to populate state passed as argument to make it reusable
+  getUserInput = (e, firstStateToUpdate, secondStateToUpdate, thirdStateToUpdate) => {
+      e.preventDefault();
 
-        });
-    }
+      const index = e.nativeEvent.target.selectedIndex;
 
-    // click handler that checks if a category and/or location has been selected by the user
-    // if form is valid, call API
-    clickHandler = (e, category, location) => {
-        e.preventDefault();
+      this.setState({
+        [firstStateToUpdate]: [...this.state[firstStateToUpdate], e.target.value],
+        [secondStateToUpdate]: e.nativeEvent.target[index].text,
+        [thirdStateToUpdate]: true
+      });
+  }
 
-        // if a category and location is not selected, display an error
-        if (!this.state.userCrimeCategory && !this.state.userCrimeLocation ) {
-            this.setState({
-                errorMessage: "Error: Please select a category and a location"
-            })
-        } else if (!this.state.userCrimeCategory && this.state.userCrimeLocation) {
-            // if location is selected, display error message for category select, and change locationValid to true
-            this.setState({
-                locationValid: true,
-                errorMessage: "Error: Please select a category"
-            })
-        } else if (this.state.userCrimeCategory && !this.state.userCrimeLocation) {
-            // if category is selected, display error message for location select, and change categoryValid to true
-            this.setState({
-                categoryValid: true,
-                errorMessage: "Error: Please select a location"
-            })
-        } else {
-            // if the form is valid, set locationValid and categoryValid to valid, clear error message, and invoke api call as a callback after setting state
-            this.setState({
-                locationValid: true,
-                categoryValid: true,
-                errorMessage: ''
-            }, () => {
-                this.ukPoliceApiCall(category, location);
-            })
-        }
-    }
+  // click handler that checks if a category and/or location has been selected by the user
+  // if form is valid, call API
+  clickHandler = (e, userChoices) => {
+      e.preventDefault();
+      const location = userChoices[0];
+      const category = userChoices[1];
 
-    // axios call UK Police API to get user selected crimes in user selected location
-    ukPoliceApiCall = (category, location) => {
-        axios({
-            url: `https://data.police.uk/api/crimes-street/${category}`,
-            method: 'get',
-            params: {
-                poly: location,
-            }
-        }).then(response =>  {
-            const randomIndex = this.getRandomIndex(response.data.length);
-
-            if (response.data.length) {
-                const chosenCrime = response.data[randomIndex];
-                
-                this.setState({
-                    crime: chosenCrime,
-                    errorMessage: '',
-                    showPokemon: true
-                });
-            } else {
-                this.setState({
-                    errorMessage: 'Error: there are no results for that type of crime at the location you selected.',
-                })
-            }
-        }).catch(() => {
-            this.setState({
-                errorMessage: 'Error: there are no crimes currently available. Please try again later.',
-            });
-        });
+      // clear the error message if present, and make api call as a callback after setting state
+      this.setState({
+          errorMessage: ''
+      }, () => {
+          this.ukPoliceApiCall(location, category);
+      })
     }
 
 
-    render() {
-        return (
-            <>
-            {
-                // this.state.showPokemon is set to true when the crime data has come back
-                this.state.showPokemon
-                ?   <> 
-                        <p className="crime-reminder">You're in <span className="crime-reminder-accent">{this.state.userNiceLocationName}</span> solving a case about <span className="normalize-text crime-reminder-accent">{this.state.userNiceCategoryName}</span>.</p>
-                        <PokemonList checkResultCallback={this.props.checkResultCallback} crimeProp={this.state.crime} niceCrimeName={this.state.userNiceCategoryName} />
-                    </>
-                :   <div className="form-wrapper">
-                        <form>
-                            <div className="selects-wrapper">
-                                <div className="select-wrapper">
-                                    <Select
-                                        changeHandler={e => {
-                                            this.getUserInput(e, 'userCrimeLocation', 'userNiceLocationName')
-                                        }}
-                                        label={'Crime Locations'}
-                                        labelFor={'crime-location'}
-                                        arrayProp={this.state.crimeLocations}
-                                        optionValue={'poly'}
-                                        optionName={'name'}
-                                        selectName={'crime-locations'}
-                                        isValid={this.state.locationValid}
-                                    />
-                                </div>
-                                        
-                                <div className="select-wrapper">
-                                    <Select
-                                        changeHandler={e => {
-                                            this.getUserInput(e, 'userCrimeCategory', 'userNiceCategoryName')
-                                        }}
-                                        onChange={this.getUserInput}
-                                        label={'Crime Categories'}
-                                        labelFor={'crime-category'}
-                                        arrayProp={this.state.crimeCategories}
-                                        optionValue={'url'}
-                                        optionName={'name'}
-                                        selectName={'crime-categories'}
-                                        isValid={this.state.categoryValid}
-                                    />
-                                </div>
-                            </div>
+  // axios call UK Police API to get user selected crimes in user selected location
+  ukPoliceApiCall = (location, category) => {
+      axios({
+          url: `https://data.police.uk/api/crimes-street/${category}`,
+          method: 'get',
+          params: {
+              poly: location,
+          }
+      }).then(response =>  {
+          const randomIndex = this.getRandomIndex(response.data.length);
 
-                            { this.state.errorMessage !== '' ? <ErrorMessage formErrorId={'error-description'}>{this.state.errorMessage}</ErrorMessage> : null }
+          if (response.data.length) {
+              const chosenCrime = response.data[randomIndex];
 
-                            <Button onClick={e => { this.clickHandler(e, this.state.userCrimeCategory, this.state.userCrimeLocation)}}>
-                                Get Pokemon
-                            </Button>
-                        </form>
-                    </div>
+              this.setState({
+                  crime: chosenCrime,
+                  errorMessage: '',
+                  showPokemon: true
+              });
+          } else {
+              this.setState({
+                  errorMessage: 'Error: there are no results for that type of crime at the location you selected.',
+              })
+          }
+      }).catch(() => {
+          this.setState({
+              errorMessage: 'Error: there are no crimes currently available. Please try again later.',
+          });
+      });
+  }
+
+
+  render() {
+    return (
+      <>
+        {
+          // this.state.showPokemon is set to true when the crime data is returned from API call
+          this.state.showPokemon
+        ?
+          <>
+            <p className="crime-reminder">You're in <span className="crime-reminder-accent">{this.state.chosenCrimeLocation}</span> solving a case about <span className="normalize-text crime-reminder-accent">{this.state.chosenCrimeCategory}</span>.</p>
+            <PokemonList checkResultCallback={this.props.checkResultCallback} crimeProp={this.state.crime} niceCrimeName={this.state.chosenCrimeCategory} />
+          </>
+        :
+          <div className="form-wrapper">
+            <form>
+              <div className="selects-wrapper">
+                <div className="select-wrapper">
+                  <Select
+                    changeHandler={e => {
+                      this.getUserInput(e, 'userInputs', 'chosenCrimeLocation', 'locationValid')
+                    }}
+                    label={'Crime Locations'}
+                    labelFor={'crime-location'}
+                    arrayProp={this.state.crimeLocations}
+                    optionValue={'poly'}
+                    optionName={'name'}
+                    selectName={'crime-locations'}
+                  />
+                </div>
+
+                {
+                  this.state.locationValid
+                ?
+                  <div className="select-wrapper">
+                    <Select
+                      changeHandler={e => {
+                        this.getUserInput(e, 'userInputs', 'chosenCrimeCategory', 'categoryValid')
+                      }}
+                      onChange={this.getUserInput}
+                      label={'Crime Categories'}
+                      labelFor={'crime-category'}
+                      arrayProp={this.state.crimeCategories}
+                      optionValue={'url'}
+                      optionName={'name'}
+                      selectName={'crime-categories'}
+                    />
+                  </div>
+                :
+                  null
                 }
-            </>
-        )
-    }
+              </div>
+
+              {
+                this.state.errorMessage !== ''
+              ?
+                <ErrorMessage formErrorId={'error-description'}>{this.state.errorMessage}</ErrorMessage>
+              :
+                null
+              }
+
+              {
+                this.state.locationValid && this.state.categoryValid
+              ?
+                <Button onClick={e => { this.clickHandler(e, this.state.userInputs)}}>
+                    Get Pokemon
+                </Button>
+              :
+                null
+              }
+            </form>
+          </div>
+        }
+      </>
+    )
+  }
 }
 
 export default Form;

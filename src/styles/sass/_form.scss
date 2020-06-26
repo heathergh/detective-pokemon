@@ -9,7 +9,8 @@
     }
 
     .selects-wrapper {
-
+      display: flex;
+      flex-direction: column;
       p, label {
         font-size: 2rem;
       }
@@ -42,6 +43,7 @@
         padding: 10px 0;
         font-size: 1.8rem;
         text-align: center;
+        text-align-last: center;
       }
     }
   }
@@ -60,26 +62,16 @@
   .form-wrapper {
     display: block;
 
-    label, select {
+    select {
       max-width: none;
     }
-
     .selects-wrapper {
-      display: flex;
-      align-self: normal;
-      justify-content: space-between;
-      max-width: none;
+      flex-direction: row;
     }
-
     .select-wrapper {
       display: flex;
       flex-direction: column;
-      width: 100%;
-
-      label {
-        max-width: none;
-        width: 100%;
-      }
+      width: 50%;
 
       select {
         margin-top: 25px;
@@ -115,7 +107,7 @@
       &:first-of-type {
         margin-right: 100px;
       }
-      
+
       &:nth-of-type(2) {
         margin: 0;
       }
