@@ -186,8 +186,8 @@ html {
 }
 
 body {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(rgba(39, 56, 120, 0.9))), url("../assets/background.jpg");
-  background-image: linear-gradient(black, rgba(39, 56, 120, 0.9)), url("../assets/background.jpg");
+  background-image: -webkit-gradient(linear, left bottom, right top, from(rgba(39, 56, 120, 0.8)), to(rgba(0, 0, 0, 0.8))), url("../assets/background.jpg");
+  background-image: linear-gradient(to top right, rgba(39, 56, 120, 0.8), rgba(0, 0, 0, 0.8)), url("../assets/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -712,24 +712,43 @@ header form input:focus {
 
 @-webkit-keyframes pokeball-spin {
   0% {
-    -webkit-transform: translateX(-100px) rotate(-10deg);
-            transform: translateX(-100px) rotate(-10deg);
+    -webkit-transform: translateX(-50px) rotate(-10deg);
+            transform: translateX(-50px) rotate(-10deg);
   }
   100% {
-    -webkit-transform: translateX(100px) rotate(370deg);
-            transform: translateX(100px) rotate(370deg);
+    -webkit-transform: translateX(50px) rotate(370deg);
+            transform: translateX(50px) rotate(370deg);
   }
 }
 
 @keyframes pokeball-spin {
   0% {
-    -webkit-transform: translateX(-100px) rotate(-10deg);
-            transform: translateX(-100px) rotate(-10deg);
+    -webkit-transform: translateX(-50px) rotate(-10deg);
+            transform: translateX(-50px) rotate(-10deg);
   }
   100% {
-    -webkit-transform: translateX(100px) rotate(370deg);
-            transform: translateX(100px) rotate(370deg);
+    -webkit-transform: translateX(50px) rotate(370deg);
+            transform: translateX(50px) rotate(370deg);
   }
+}
+
+.pokeball-loader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  max-width: 320px;
+}
+
+.pokeball-loader .pokeball {
+  -webkit-animation: pokeball-spin 1s infinite linear alternate;
+          animation: pokeball-spin 1s infinite linear alternate;
+}
+
+.pokeball-loader .pokeball img {
+  height: 75px;
 }
 
 .pokemon-flex {
@@ -754,22 +773,6 @@ header form input:focus {
   display: block;
   max-width: 100%;
   height: 125px;
-}
-
-.pokemon-flex .pokeball-loader {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  max-width: 320px;
-  width: 80%;
-}
-
-.pokemon-flex .pokeball-loader .pokeball {
-  -webkit-animation: pokeball-spin 1s infinite linear alternate;
-          animation: pokeball-spin 1s infinite linear alternate;
 }
 
 .pokemon-flex label {

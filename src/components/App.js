@@ -50,7 +50,7 @@ class App extends React.Component {
       sceneNumber: 1
     })
   }
-  
+
   render() {
     return (
       <div>
@@ -58,18 +58,18 @@ class App extends React.Component {
         <main>
           <div className="wrapper">
             {
-              this.state.sceneNumber === 1 
+              this.state.sceneNumber === 1
               ? <Form checkResultCallback = {this.checkResult} />
               : null
             }
             {
               this.state.sceneNumber === 2
-              ? <GameResult 
+              ? <GameResult
                   pokemonName={this.state.resultInfo.pokemonName}
                   resultOfGame={this.state.resultInfo.resultOfGame}
                   crimeSolved={this.state.resultInfo.crimeSolved}
                   reasonForSuccess={this.state.resultInfo.reasonForSuccess}
-                  playAgain = {this.resetTheGame} 
+                  playAgain = {this.resetTheGame}
                 />
               :null
             }

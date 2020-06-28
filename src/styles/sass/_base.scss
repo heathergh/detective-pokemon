@@ -5,7 +5,7 @@
     font-size: $baseFontSize;
     color: $primaryWhite;
   }
-  
+
   body {
     background-image:linear-gradient(to top right, transparentize($primaryColor, 0.2), transparentize($black, 0.2)), url('../assets/background.jpg');
     background-repeat: no-repeat;
@@ -80,11 +80,11 @@
     padding: 1rem 7.7rem;
     width: auto;
   }
-  
+
   p, label {
     font-size: 2.3rem;
   }
-  
+
   .wrapper {
     width: 80%;
   }

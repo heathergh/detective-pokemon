@@ -3,9 +3,8 @@ import axios from 'axios';
 
 import pokemonImages from '../pokemonImageArray';
 import ErrorMessage from './ErrorMessage';
+import Loader from './Loader';
 import crimes from '../crimes.json';
-
-import pokeball from '../assets/pokeball.svg';
 
 class PokemonList extends React.Component {
   constructor() {
@@ -14,7 +13,8 @@ class PokemonList extends React.Component {
       currentPokemon: [],
       userSelection: '',
       correctCrimeInfo: {},
-      errorMessage: ''
+      errorMessage: '',
+      loading: true
     }
   }
   componentDidMount() {
@@ -77,7 +77,7 @@ class PokemonList extends React.Component {
             dataResponse: 'json',
           });
           specificPokemonPromises.push(specificCall);
-          
+
         })
 
         //Once all 5 axios call are back:
@@ -103,7 +103,8 @@ class PokemonList extends React.Component {
           //Set the state to hold our new list of 5 pokemon!
           this.setState({
             currentPokemon: newPokemonList,
-            errorMessage: ''
+            errorMessage: '',
+            loading: false
           })
         }).catch(() => {
           this.setState({
@@ -126,12 +127,12 @@ class PokemonList extends React.Component {
     return newWord;
   }
 
-  
+
   handleOptionChange = (event) => {
     //When a pokemon is chosen, and we're on desktop, scroll to the button
-    if(window.innerWidth > 1080){
+    // if(window.innerWidth > 1080){
       this.scrollToBottom();
-    }
+    // }
     //Set the state to hold the value of the radio button selection
     this.setState({
       userSelection: event.target.value
@@ -160,38 +161,34 @@ class PokemonList extends React.Component {
   }
 
   render() {
+    if (this.state.loading) { return <Loader /> }
+
     return (
       <div>
         <form className="pokemon-list" id="pokemonList">
           <legend> Select a pokemon to help you with this case:</legend>
           <div className="pokemon-flex">
             {
-              this.state.currentPokemon.length > 0
-              ? this.state.currentPokemon.map((poke, i) => {
-                  return (
-                    <div key={i}>
-                      <input type="radio" name="pokemon" id={poke.id} value={i} checked={parseInt(this.state.userSelection) === i} onChange={this.handleOptionChange} />
-                      <label htmlFor={poke.id}>
-                        <img src={pokemonImages[poke.id - 1]} alt={`Here's the Pokemon ${poke.name}.`} />
-                        <h2>{poke.name}</h2>
-                        <div className="pokemon-types">
-                          {
-                            poke.types.map((type, i) => {
-                              return (
-                                <div key={type.type.name}><span className={`pokemon-type-span ${type.type.name}`}>{type.type.name}</span></div>
-                              )
-                            })
-                          }
-                        </div> {/* End of Type Div */}
-                      </label>
-                    </div> /* End of Pokemon radio button div */
-                  )
-                })
-              : <div className="pokeball-loader">
-                  <div className="pokeball">
-                  	<img src={pokeball} alt="Loading the pokemon api!" />
-                  </div>
-                </div> /* End of Loader Div */
+              this.state.currentPokemon.map((poke, i) => {
+                return (
+                  <div key={i}>
+                    <input type="radio" name="pokemon" id={poke.id} value={i} checked={parseInt(this.state.userSelection) === i} onChange={this.handleOptionChange} />
+                    <label htmlFor={poke.id}>
+                      <img src={pokemonImages[poke.id - 1]} alt={`Here's the Pokemon ${poke.name}.`} />
+                      <h2>{poke.name}</h2>
+                      <div className="pokemon-types">
+                        {
+                          poke.types.map((type, i) => {
+                            return (
+                              <div key={type.type.name}><span className={`pokemon-type-span ${type.type.name}`}>{type.type.name}</span></div>
+                            )
+                          })
+                        }
+                      </div> {/* End of Type Div */}
+                    </label>
+                  </div> /* End of Pokemon radio button div */
+                )
+              })
             }
           </div> {/* End of pokemon-flex div */}
           <button id="submit" onClick={this.returnedSelection} ref={(element) => { this.investigationButton = element; }}>Start investigation!</button>
